@@ -1,0 +1,38 @@
+<app-loader></app-loader>
+<header id="header" class="page-topbar">
+  <!-- start header nav-->
+  <div class="navbar-fixed">
+    <nav class="navbar-color navBarColor">
+      <div class="nav-wrapper">
+        <ul class="left">
+          <li>
+            <h1 class="logo-wrapper">
+              <a href="index.html" class="brand-logo darken-1">
+                <img src="/assets/public/images/logo/SaúdeSimLogoorizontalNegativo.png" alt="Saúde Sim Logo">
+              </a>
+            </h1>
+          </li>
+          <li class="consultar-chamado">
+            <a [routerLink]="['/', 'chamados' ]" class="itens-menu waves-effect waves-light">
+              Pesquisar Chamados
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/', 'chamado', 'novo']" class="itens-menu waves-effect waves-light">
+              Novo Chamado
+            </a>
+          </li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="settings-dropdown">
+              <i class="material-icons">settings</i>
+            </a>
+          </li>
+        </ul>
+        <!-- profile-dropdown -->
+      </div>
+    </nav>
+  </div>
+  <!-- end header nav-->
+</header>

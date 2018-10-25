@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col s12">
+    <div class="row titulo-tela">
+      <h5>PESQUISAR CHAMADOS</h5>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s2 m3">
+        <input id="protocolo" type="text" name="protocolo" class="validate">
+        <label for="protocolo">Nº Protocolo</label>
+      </div>
+      <div class="input-field col s2 m34">
+        <input id="cpfCnpj" name="cpfCnpj" type="text" class="validate">
+        <label for="cpfCnpj">CPF/CNPJ</label>
+      </div>
+      <div class="input-field col s3 m2">
+        <select id="tipo" name="tipo">
+          <option value="" disabled selected>Setor</option>
+          <option>Call Center</option>
+          <option>Auditoria</option>
+        </select>
+      </div>
+      <div class="input-field col s3 m2">
+        <select id="tipo" name="tipo">
+          <option value="" disabled selected>Categoria</option>
+          <option>Categoria 01</option>
+          <option>Categoria 02</option>
+        </select>
+      </div>
+      <div class="input-field col s3 m2">
+        <select id="tipo" name="tipo">
+          <option value="" disabled selected>Origem</option>
+          <option>Call Center</option>
+          <option>Auditoria</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <div class="input-field col s3 m3">
+        <select id="tipo" name="tipo">
+          <option value="" disabled selected>Responsável</option>
+          <option>Joao</option>
+          <option>Maria</option>
+        </select>
+      </div>
+      <div class="input-field col s1 m1">
+        <p>
+          <input type="checkbox" id="todos" />
+          <label for="todos">Todos</label>
+        </p>
+      </div>
+      <div class="input-field col s1 m1">
+        <p>
+          <input type="checkbox" id="aberto" />
+          <label for="aberto">Aberto</label>
+        </p>
+      </div>
+      <div class="input-field col s1 m1">
+        <p>
+          <input type="checkbox" id="reaberto" />
+          <label for="reaberto">Reaberto</label>
+        </p>
+      </div>
+      <div class="input-field col s1 m1">
+        <p>
+          <input type="checkbox" id="devolvido" />
+          <label for="devolvido">Devolvido</label>
+        </p>
+      </div>
+      <div class="input-field col s1 m1">
+        <p>
+          <input type="checkbox" id="finalizado" />
+          <label for="finalizado">Finalizado</label>
+        </p>
+      </div>
+      <div class="input-field col s2 m2">
+        <p>
+          <input type="checkbox" id="ematendimento" />
+          <label for="ematendimento">Em Atendimento</label>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <button class="btn blue-saudesim waves-effect waves-light" type="button" (click)="obterChamados()" name="action">
+          Pesquisar
+        </button>
+        <button class="btn grey waves-effect waves-light limpar" type="button" (click)="limpar()" name="action">
+          Limpar
+        </button>
+      </div>
+    </div>
+  </form>
+  <br />
+  <br />
+</div>
+<div class="row">
+  <table class="striped col s12">
+    <thead>
+      <tr class="bordaTabela">
+        <th>SLA</th>
+        <th>Data</th>
+        <th>Protocolo</th>
+        <th>Nome</th>
+        <th>CPF/CNPJ</th>
+        <th>Assunto</th>
+        <th>Setor</th>
+        <th>Categoria</th>
+        <th>Prioridade</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [routerLink]="['/', 'chamados', 1]">
+        <td>P</td>
+        <td>23/10/2018</td>
+        <td>123</td>
+        <td>Teste</td>
+        <td>0001</td>
+        <td>Layout</td>
+        <td>TI</td>
+        <td>Suporte</td>
+        <td>Alta</td>
+        <td>Aberto</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

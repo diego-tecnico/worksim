@@ -1,0 +1,148 @@
+<div class="row">
+  <form class="col s12">
+    <div class="row titulo-tela">
+      <h5>NOVO CHAMADO</h5>
+    </div>
+    <div class="row">
+      <div class="input-field col s6 m3">
+        <ul class="list-inline">
+          <li>
+            <h4 class="protocolo">Protocolo: #20181111222233</h4>
+          </li>
+        </ul>
+      </div>
+      <div class="input-field col s6 m3">
+        <select id="grupoChamado" name="grupoChamado">
+          <option value="" disabled selected>Grupo de chamados</option>
+          <option>Call Center</option>
+          <option>Auditoria</option>
+        </select>
+      </div>
+      <div class="input-field col s6 m3">
+        <select id="categoriaChamado" name="categoriaChamado">
+          <option value="" disabled selected>Categoria de chamados</option>
+          <option>2º via</option>
+          <option>Reclamação</option>
+        </select>
+      </div>
+      <div class="input-field col s6 m3">
+        <select id="subCategoriaChamados" name="subCategoriaChamados">
+          <option value="" disabled selected>SubCategoria de chamados</option>
+          <option>Carterinha</option>
+          <option>Portal Caiu</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6 m3">
+        <select id="tipoChamados" name="tipoChamados">
+          <option value="" disabled selected>Tipo de chamados</option>
+          <option>ANS</option>
+          <option>Normal</option>
+          <option>Ameaça ao procon</option>
+        </select>
+      </div>
+      <div class="input-field col s6 m9">
+        <input id="assunto" name="assunto" type="text" data-length="140" class="validate">
+        <label for="assunto">Assunto</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6 m3">
+        <label for="icon_prefix">Código do Beneficiário</label>
+        <input id="icon_prefix" type="text" class="validate">
+        <i (click)="buscarBeneficiarioPorCodigo()" class="material-icons prefix buscar-por-codigo">send</i>
+      </div>
+      <div class="input-field col s6 m3 input-email">
+        <input id="nome" name="nome" type="text" data-length="50" class="validate">
+        <label for="nome">Nome</label>
+      </div>
+      <div class="input-field col s6 m3 ">
+        <input id="email" name="email" type="text" data-length="50" class="validate">
+        <label for="email">E-mail</label>
+      </div>
+      <div class="input-field col s6 m2">
+        <input id="telefone" name="telefone" type="text" data-length="50" class="validate">
+        <label for="telefone">Telefone</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4 m3">
+        <label for="icon_prefix">CEP</label>
+        <input id="icon_prefix" type="text" class="validate">
+        <i (click)="buscarPorCep()" class="material-icons prefix buscar-por-codigo">send</i>
+      </div>
+      <div class="input-field col s4 m2 input-endereco">
+        <select id="uf" name="uf">
+          <option value="" disabled selected>UF</option>
+          <option>DF</option>
+          <option>SP</option>
+          <option>GO</option>
+        </select>
+      </div>
+      <div class="input-field col s4 m6">
+        <input id="bairro" name="bairro" type="text" class="validate">
+        <label for="bairro">Bairro</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6 m6">
+        <input id="endereco" name="endereco" type="text" class="validate">
+        <label for="endereco">Endereço</label>
+      </div>
+      <div class="input-field col s6 m6">
+        <select id="script" name="script">
+          <option value="" disabled selected>Script</option>
+          <option>Procedimento de 2º Carterinha</option>
+          <option>Reclamação do portal</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <h5>Descrição</h5>
+      <trumbowyg id="editor" placeholder="Descrição da nova atividade" [options]="opcoesTrumbowyg" [update]="updateTrumbowyg" (savedContent)="textoTrumbowyg=$event"></trumbowyg>
+    </div>
+    <div class="row">
+      <div class="row">
+        Anexar Arquivos: <label for="fupload" class="control-label label-bordered">Inserir</label>
+        <input type="file" id="fupload" name="fupload" multiple (change)="onChange($event, showFileNames)" class="fupload form-control" />
+      </div>
+    </div>
+    <div *ngIf="mostrarArquivos" class="row">
+      <table class="striped col s12 m12">
+        <thead>
+          <tr class="bordaTabela">
+            <th class="col m9">Nome do Arquivo</th>
+            <th class="col m2">Formato</th>
+            <th class="col m1 acao">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let arquivo of arquivos">
+            <td class="col m9">{{ arquivo.name }}</td>
+            <td class="col m2">{{ arquivo.type }}</td>
+            <td class="col m1 acao">
+              <span (click)="removerArquivo(arquivo)" class="remover">X</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+    <!--<div class="row">
+    <div class="input-field col s12">
+      <button class="btn blue-saudesim waves-effect waves-light" type="button" (click)="obterChamados()" name="action">
+        Pesquisar
+      </button>
+      <button class="btn grey waves-effect waves-light limpar" type="button" (click)="limpar()" name="action">
+        Limpar
+      </button>
+    </div>
+  </div>-->
+  </form>
+  <br />
+  <br />
+</div>
+

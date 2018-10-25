@@ -1,0 +1,52 @@
+.EstaNoPrazo {
+  color: white;
+  width: 40px;
+  text-align: center;
+  border: 1px solid;
+}
+
+  .EstaNoPrazo > span {
+    background-color: #055405;
+    border: 7px solid #055405;
+    border-radius: 3px;
+  }
+
+.ForaDoPrazo {
+  color: white;
+  width: 40px;
+  text-align: center;
+  border: 1px solid;
+}
+
+  .ForaDoPrazo > span {
+    background-color: #a51919;
+    border: 7px solid #a51919;
+    border-radius: 3px;
+  }
+
+
+
+.bordaTabela > th {
+  border-right: 1px solid #b7b7b7;
+  border-left: 1px solid #b7b7b7;
+  text-align: center;
+}
+
+.btn {
+  border-radius: 2px !important;
+}
+
+.limpar {
+  margin-left: 3px;
+}
+
+.bordaTabela > tr {
+  background-color: blue;
+}
+
+tbody > tr:hover {
+  background-color: #b5b5b5;
+  cursor: pointer;
+}
+
+

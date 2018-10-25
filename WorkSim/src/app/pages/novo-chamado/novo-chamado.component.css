@@ -1,0 +1,105 @@
+.EstaNoPrazo {
+  color: white;
+  width: 40px;
+  text-align: center;
+  border: 1px solid;
+}
+
+  .EstaNoPrazo > span {
+    background-color: #055405;
+    border: 7px solid #055405;
+    border-radius: 3px;
+  }
+
+.ForaDoPrazo {
+  color: white;
+  width: 40px;
+  text-align: center;
+  border: 1px solid;
+}
+
+  .ForaDoPrazo > span {
+    background-color: #a51919;
+    border: 7px solid #a51919;
+    border-radius: 3px;
+  }
+
+
+
+.bordaTabela > th {
+  border-right: 1px solid #b7b7b7;
+  border-left: 1px solid #b7b7b7;
+  text-align: left;
+}
+
+.btn {
+  border-radius: 2px !important;
+}
+
+.limpar {
+  margin-left: 3px;
+}
+
+.bordaTabela > tr {
+  background-color: blue;
+}
+
+tbody > tr:hover {
+  background-color: rgba(181, 181, 181, 0.87);
+}
+
+.protocolo {
+  color: #844;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.buscar-por-codigo {
+  cursor: pointer;
+  color: black;
+  margin-top: 12px;
+  font-size: 26px;
+}
+
+  .buscar-por-codigo:hover {
+    color: #008AA3;
+  }
+
+.input-endereco,
+.input-email {
+  margin-left: 20px !important;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.label-bordered {
+  margin: 10px;
+  padding: 6px 38px;
+  background-color: #6d6c6c;
+  color: #fff;
+  border: 1px solid #6d6c6c;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.label-bordered:hover {
+  cursor: pointer;
+}
+
+.remover {
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #e81e1e;
+  text-align: center;
+  padding: 1px 8px;
+  color: #fff;
+  background-color: #e81e1e;
+  border-bottom: 1px;
+  border-top: 1px;
+}
+
+.acao {
+  text-align: center !important;
+}
