@@ -13,6 +13,7 @@ namespace WorkSim.Models
     public int CategoriaId { get; set; }
     public string No_sub_categoria { get; set; }
     public DateTime Dt_cadastro { get; set; }
+    public int SLA { get; set; }
     public bool St_registro_ativo { get; set; }
   }
 }
