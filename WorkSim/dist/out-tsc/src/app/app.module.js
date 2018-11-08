@@ -26,11 +26,13 @@ var styles_component_1 = require("./componentes/styles/styles.component");
 var error403_component_1 = require("./pages/error/error403/error403.component");
 var http_app_client_service_1 = require("./shared/http-app-client.service");
 var forms_1 = require("@angular/forms");
-var detalhes_chamados_component_1 = require("./pages/detalhes-chamados/detalhes-chamados.component");
-var detalhes_chamados_service_1 = require("./pages/detalhes-chamados/detalhes-chamados.service");
+var detalhes_chamado_component_1 = require("./pages/detalhes-chamado/detalhes-chamado.component");
+var detalhes_chamado_service_1 = require("./pages/detalhes-chamado/detalhes-chamado.service");
 var ngx_toastr_1 = require("ngx-toastr");
 var animations_1 = require("@angular/platform-browser/animations");
 var menu_component_1 = require("./componentes/menu/menu.component");
+var novo_chamado_component_1 = require("./pages/novo-chamado/novo-chamado.component");
+var ng2_lazy_trumbowyg_1 = require("ng2-lazy-trumbowyg");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -47,10 +49,12 @@ var AppModule = /** @class */ (function () {
                 error500_component_1.Error500Component,
                 styles_component_1.StylesComponent,
                 error403_component_1.Error403Component,
-                detalhes_chamados_component_1.DetalhesChamadosComponent,
-                menu_component_1.MenuComponent
+                detalhes_chamado_component_1.DetalhesChamadoComponent,
+                menu_component_1.MenuComponent,
+                novo_chamado_component_1.NovoChamadoComponent
             ],
             imports: [
+                ng2_lazy_trumbowyg_1.TrumbowygModule.forRoot({ plugins: ['colors', 'preformatted', 'pasteimage', 'upload'], version: '2.8.0' }),
                 platform_browser_1.BrowserModule,
                 http_1.HttpClientModule,
                 animations_1.BrowserAnimationsModule,
@@ -60,7 +64,7 @@ var AppModule = /** @class */ (function () {
                 ngx_toastr_1.ToastrModule.forRoot()
             ],
             exports: [router_1.RouterModule],
-            providers: [http_app_client_service_1.HttpAppClient, pesquisar_chamados_service_1.PesquisarChamadosService, detalhes_chamados_service_1.DetalhesChamadosService, ngx_toastr_1.ToastrService],
+            providers: [http_app_client_service_1.HttpAppClient, pesquisar_chamados_service_1.PesquisarChamadosService, detalhes_chamado_service_1.DetalhesChamadoService, ngx_toastr_1.ToastrService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

@@ -23,7 +23,9 @@ namespace WorkSim.Controllers
     {
       try
       {
-        var protocolo = _db.Protocolo.ToList();
+        var protocolo = GerarProtocolo();
+
+
         return Ok(new { protocolo });
       }
       catch (Exception ex)
@@ -31,6 +33,32 @@ namespace WorkSim.Controllers
         return BadRequest(ex.Message);
       }
     }
+
+    private object GerarProtocolo()
+    {
+      var dadosDoProtocolo = new DadosDoProtocolo
+      {
+        CodSequencial = "0001"
+      };
+
+      return dadosDoProtocolo.Protocolo();
+  }
+
+    public class DadosDoProtocolo
+    {
+      public string CodSaudeSim { get; private set; } = "320111";
+      public string AnoMesDia { get; private set; } = DateTime.Now.ToString("yyyyMMdd");
+      public string CodSequencial { get; set; }
+
+
+      public string Protocolo()
+      {
+        return $"{CodSaudeSim}{AnoMesDia}{CodSequencial}";
+      }
+
+    }
+
+  
 
   }
 }

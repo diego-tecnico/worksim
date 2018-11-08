@@ -5,7 +5,8 @@ var pesquisar_chamados_component_1 = require("./pages/pesquisar-chamados/pesquis
 var error404_component_1 = require("./pages/error/error404/error404.component");
 var error500_component_1 = require("./pages/error/error500/error500.component");
 var error403_component_1 = require("./pages/error/error403/error403.component");
-var detalhes_chamados_component_1 = require("./pages/detalhes-chamados/detalhes-chamados.component");
+var detalhes_chamado_component_1 = require("./pages/detalhes-chamado/detalhes-chamado.component");
+var novo_chamado_component_1 = require("./pages/novo-chamado/novo-chamado.component");
 exports.AppRoutes = [
     {
         path: 'chamados',
@@ -13,8 +14,12 @@ exports.AppRoutes = [
         pathMatch: 'full'
     },
     {
+        path: 'chamado/novo',
+        component: novo_chamado_component_1.NovoChamadoComponent,
+    },
+    {
         path: 'chamados/:id',
-        component: detalhes_chamados_component_1.DetalhesChamadosComponent
+        component: detalhes_chamado_component_1.DetalhesChamadoComponent
     },
     {
         path: 'auth/login',

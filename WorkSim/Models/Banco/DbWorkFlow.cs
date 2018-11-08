@@ -11,6 +11,7 @@ namespace WorkSim.Models.Banco
     public DbWorkFlow(DbContextOptions dbContextOptions) : base(dbContextOptions) { }
 
     public DbSet<Chamados> Chamados { get; set; }
+    public DbSet<Beneficiario> Beneficiario { get; set; }
     public DbSet<AcoesChamados> AcoesChamados { get; set; }
     public DbSet<Protocolo> Protocolo { get; set; }
 

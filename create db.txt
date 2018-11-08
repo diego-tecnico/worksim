@@ -1,0 +1,165 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema worksim
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema worksim
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `worksim` DEFAULT CHARACTER SET utf8 ;
+USE `worksim` ;
+
+-- -----------------------------------------------------
+-- Table `worksim`.`BENEFICIARIO`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `worksim`.`BENEFICIARIO` (
+  `Id` INT NOT NULL AUTO_INCREMENT COMMENT 'Codigo sequencial da tabela\n',
+  `NO_BENEFICIARIO` VARCHAR(100) NULL COMMENT 'Nome do contato',
+  `TP_PESSOA` VARCHAR(1) NULL COMMENT 'Tipo de pessoal. Valores possiveis: 1 - Pessoa Fisica, 2 - Pessoa Jurídica\n',
+  `DS_EMAIL` VARCHAR(100) NULL COMMENT 'E-mail para contato',
+  `CO_BENEFICIARIO` VARCHAR(45) NULL COMMENT 'Codigo do beneficiário',
+  `NU_TELEFONE` VARCHAR(45) NULL COMMENT 'Numero do telefone de contato',
+  `NU_CEP` VARCHAR(10) NULL,
+  `DS_ENDERECO` VARCHAR(100) NULL COMMENT 'ENDERECO DO BENEFICIARIO',
+  `NO_BAIRRO` VARCHAR(100) NULL COMMENT 'Bairro do contato\n',
+  `SG_UF` VARCHAR(2) NULL,
+  `DT_CADASTRO` DATE NULL,
+  `ST_REGISTRO_ATIVO` TINYINT NULL DEFAULT 1,
+  PRIMARY KEY (`Id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `worksim`.`PROTOCOLO`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `worksim`.`PROTOCOLO` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `NU_PROTOCOLO` VARCHAR(20) NULL,
+  `DT_CADASTRO` DATETIME NULL,
+  PRIMARY KEY (`Id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `worksim`.`SETOR`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `worksim`.`SETOR` (
+  `Id` INT NOT NULL AUTO_INCREMENT COMMENT 'CODIGO SEQUENCIAL DA TABELA',
+  `NO_SETOR` VARCHAR(100) NULL COMMENT 'NOME DO SETOR\n',
+  `DT_CADASTRO` DATE NULL COMMENT 'DATA DE CADASTRO',
+  `DT_ATUALIZACAO` DATE NULL COMMENT 'DATA DE ATUALIZAÇÃO',
+  `ST_REGISTRO_ATIVO` TINYINT NULL DEFAULT 1 COMMENT 'SITUACAO DO REGISTRO. VALORES POSSIVEIS: S - ATIVO, N - INATIVO',
+  PRIMARY KEY (`Id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `worksim`.`CATEGORIA_SETOR`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `worksim`.`CATEGORIA_SETOR` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `NO_CATEGORIA_SETOR` VARCHAR(50) NULL,
+  `SetorId` INT NOT NULL,
+  PRIMARY KEY (`Id`),
+  INDEX `IDX_SETOR_CATEGORIA_SETOR` (`SetorId` ASC),
+  CONSTRAINT `FK_SETOR_CATEGORIASETOR`
+    FOREIGN KEY (`SetorId`)PROTOCOLOPROTOCOLO
+    REFERENCES `worksim`.`SETOR` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `worksim`.`SUB_CATEGORIA`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `worksim`.`SUB_CATEGORIA` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `NO_SUB_CATEGORIA` VARCHAR(45) NULL,
+  `DT_CADASTRO` DATE NULL,
+  `ST_REGISTRO_ATIVO` TINYINT NULL DEFAULT 1,
+  `CategoriaId` INT NOT NULL,
+  PRIMARY KEY (`Id`),
+  INDEX `fk_TB_SUB_CATEGORIA_TB_CATEGORIA_SETOR1_idx` (`CategoriaId` ASC),
+  CONSTRAINT `fk_TB_SUB_CATEGORIA_TB_CATEGORIA_SETOR1`
+    FOREIGN KEY (`CategoriaId`)
+    REFERENCES `worksim`.`CATEGORIA_SETOR` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `worksim`.`CHAMADO`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `worksim`.`CHAMADO` (
+  `Id` INT NOT NULL AUTO_INCREMENT COMMENT 'CODIGO SEQUENCIAL DA TABELA',
+  `TP_CHAMADO` ENUM('NORMAL', 'AMEAÇA ANS', 'AMEAÇA PROCESSO') NULL COMMENT 'VALORES POSSIVEIS: 1 - NORMAL, 2 - AMEAÇA ANS, 3 - AMEAÇA PROCESSO',
+  `DS_ASSUNTO` VARCHAR(255) NULL,
+  `ProtocoloId` INT NOT NULL,
+  `BeneficiarioId` INT NOT NULL,
+  `SubCategoriaId` INT NOT NULL,
+  `ST_REGISTRO_ATIVO` TINYINT NULL DEFAULT 1 COMMENT 'situacao do registro 1: ativo, 0:inativo\n',
+  PRIMARY KEY (`Id`),
+  INDEX `fk_TB_CHAMADO_TB_CONTATO1_idx` (`BeneficiarioId` ASC),
+  INDEX `fk_TB_CHAMADO_TB_PROTOCOLO1_idx` (`ProtocoloId` ASC),
+  INDEX `fk_TB_CHAMADO_TB_SUB_CATEGORIA1_idx` (`SubCategoriaId` ASC),
+  CONSTRAINT `FK_CHAMADO_CONTATO`
+    FOREIGN KEY (`BeneficiarioId`)
+    REFERENCES `worksim`.`BENEFICIARIO` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TB_CHAMADO_TB_PROTOCOLO1`
+    FOREIGN KEY (`ProtocoloId`)
+    REFERENCES `worksim`.`PROTOCOLO` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TB_CHAMADO_TB_SUB_CATEGORIA1`
+    FOREIGN KEY (`SubCategoriaId`)
+    REFERENCES `worksim`.`SUB_CATEGORIA` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `worksim`.`HISTORICO_CHAMADO`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `worksim`.`HISTORICO_CHAMADO` (
+  `Id` INT NOT NULL AUTO_INCREMENT COMMENT 'CODIGO SEQUENCIAL DA TABELA',
+  `ChamadoId` INT NOT NULL COMMENT 'CODIGO DO CHAMADO. CHAVE ESTRANGEIRA DA TABELA CHAMADO\n',
+  `DS_DESCRICAO` LONGTEXT NULL COMMENT 'DETALHAMENTO DO CHAMADO',
+  `ST_CHAMADO` ENUM('ABERTO', 'REABERTO', 'EM ATENDIMENTO', 'ENCAMINHADO', 'DEVOLVIDO', 'FINALIZADO') NOT NULL DEFAULT 'ABERTO' COMMENT 'SITUACAO DO CHAMADO. VALORES POSSIVEIS: 1 - ABERTO, 2 - REABERTO, 3 - EM ATENDIMENTO, 4 - ENCAMINHADO, 5 - DEVOLVIDO, 6 - FINALIZADO',
+  `DT_CADASTRO` DATETIME NULL COMMENT 'DATA DE CADASTRO',
+  `SetorOrigemId` INT NOT NULL,
+  `SetorDestinoId` INT NOT NULL,
+  PRIMARY KEY (`Id`),
+  INDEX `fk_TB_HISTORICO_CHAMADO_TB_CHAMADO1_idx` (`ChamadoId` ASC),
+  INDEX `fk_st_origem_idx` (`SetorOrigemId` ASC),
+  INDEX `fk_st_destino_idx` (`SetorDestinoId` ASC),
+  CONSTRAINT `fk_TB_HISTORICO_CHAMADO_TB_CHAMADO1`
+    FOREIGN KEY (`ChamadoId`)
+    REFERENCES `worksim`.`CHAMADO` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_st_origem`
+    FOREIGN KEY (`SetorOrigemId`)
+    REFERENCES `worksim`.`SETOR` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_st_destino`
+    FOREIGN KEY (`SetorDestinoId`)
+    REFERENCES `worksim`.`SETOR` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
