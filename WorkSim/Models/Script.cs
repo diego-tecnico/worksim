@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace WorkSim.Models
 {
-  public class Categoria_setor
+  public class Script
   {
     [Key]
     public int Id { get; set; }
-    public string No_categoria_setor { get; set; }
-
-    public Setor Setor { get; set; }
-    public int SetorId { get; set; }
-
+    public string Nome { get; set; }
+    public string Descricao { get; set; }
   }
 }

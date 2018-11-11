@@ -9,25 +9,24 @@ using WorkSim.Models.Banco;
 namespace WorkSim.Controllers
 {
   [Route("api/[controller]")]
-  public class SubCategoriaController : Controller
+  public class ScriptController : Controller
   {
     private readonly DbWorkFlow _db;
 
-    public SubCategoriaController(DbWorkFlow db)
+    public ScriptController(DbWorkFlow db)
     {
       _db = db;
     }
 
-    [HttpGet("{categoriaId}")]
-    public object ObterSubCategorias([FromRoute] int categoriaId)
+    [HttpGet]
+    public object ObterScripts()
     {
       try
       {
-        var subCategorias = _db.Sub_categoria
-                               .Where(x => x.Categoria_setorId == categoriaId)
-                               .ToList();
+        var scripts = _db.Script
+                         .ToList();
 
-        return Ok(new { subCategorias });
+        return Ok(new { scripts });
 
       }
       catch (Exception ex)

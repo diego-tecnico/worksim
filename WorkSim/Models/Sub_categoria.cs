@@ -10,10 +10,12 @@ namespace WorkSim.Models
   {
     [Key]
     public int Id { get; set; }
-    public int CategoriaId { get; set; }
     public string No_sub_categoria { get; set; }
     public DateTime Dt_cadastro { get; set; }
-    public int SLA { get; set; }
+    public double SLA { get; set; }
     public bool St_registro_ativo { get; set; }
+
+    public Categoria_setor Categoria_setor { get; set; }
+    public int Categoria_setorId { get; set; }
   }
 }

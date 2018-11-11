@@ -11,12 +11,14 @@ namespace WorkSim.Models.Banco
     public DbWorkFlow(DbContextOptions dbContextOptions) : base(dbContextOptions) { }
 
     public DbSet<Chamado> Chamado { get; set; }
+    public DbSet<Historico_chamado> Historico_chamado { get; set; }
     public DbSet<Beneficiario> Beneficiario { get; set; }
     public DbSet<AcoesChamados> AcoesChamados { get; set; }
     public DbSet<Protocolo> Protocolo { get; set; }
     public DbSet<Setor> Setor { get; set; }
     public DbSet<Categoria_setor> Categoria_setor { get; set; }
     public DbSet<Sub_categoria> Sub_categoria { get; set; }
+    public DbSet<Script> Script { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

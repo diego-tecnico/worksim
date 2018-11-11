@@ -20,24 +20,34 @@ namespace WorkSim.Controllers
     }
 
     [HttpPost]
-    public object ObterChamados([FromBody] Filtros filtros)
+    public object ObterChamados([FromBody] FiltrosChamado filtros)
     {
       try
       {
         var chamados = _db.Chamado
+                          .Include(x => x.Protocolo)
+                          .Include(x => x.Beneficiario)
                           .Include(x => x.Sub_categoria)
+                            .ThenInclude(x => x.Categoria_setor)
+                              .ThenInclude(x => x.Setor)
                           .Select(x => new Chamado
                           {
                             Id = x.Id,
                             ProtocoloId = x.ProtocoloId,
                             BeneficiarioId = x.BeneficiarioId,
-                            SubCategoriaId = x.SubCategoriaId,
+                            Sub_CategoriaId = x.Sub_CategoriaId,
                             Tp_chamado = x.Tp_chamado,
                             Ds_assunto = x.Ds_assunto,
                             St_registro_ativo = x.St_registro_ativo,
-                            Prazo = ObterPrazoDoChamado(x.Tp_chamado, x.Sub_categoria.SLA)
+                            Dt_criacao = x.Dt_criacao,
+                            Protocolo = x.Protocolo,
+                            Beneficiario = x.Beneficiario,
+                            Sub_categoria = x.Sub_categoria,
+                            Sla = ObterPrazoDoChamado(x.Dt_criacao, x.Tp_chamado, x.Sub_categoria).SLA,
+                            EstaNoSla = ObterPrazoDoChamado(x.Dt_criacao, x.Tp_chamado, x.Sub_categoria).EstaNoSLA,
                           })
-                         .ToList();
+                          .SomenteDoFiltros(_db, filtros)
+                          .ToList();
 
         return Ok(new { chamados });
 
@@ -48,33 +58,37 @@ namespace WorkSim.Controllers
       }
     }
 
-    private static DateTime ObterPrazoDoChamado(string Tp_chamado, int SLA)
+
+    private static SLA_ATENDIMENTO ObterPrazoDoChamado(DateTime Dt_criacao, string Tp_chamado, Sub_categoria sub_Categoria)
     {
-      switch (Tp_chamado)
-      {
-        case Chamado.NORMAL:
-          return CalcularSLASubCategoria(SLA);
 
-        case Chamado.AMEACA_ANS:
-          return DateTime.Now;
+      var sla_atendimento = new SLA_ATENDIMENTO();
 
-        case Chamado.AMEACA_PROCESSO:
-          return DateTime.Now;
+        if (Tp_chamado == Chamado.NORMAL)
+          sla_atendimento.SLA = Dt_criacao.AddHours(sub_Categoria.SLA);
 
-        default:
-          return DateTime.Now;
-      }
+      if (Tp_chamado == Chamado.AMEACA_ANS)
+          sla_atendimento.SLA = Dt_criacao.AddHours(Chamado.SLA_ANS);
+
+      if (Tp_chamado == Chamado.AMEACA_PROCESSO)
+          sla_atendimento.SLA = Dt_criacao.AddHours(Chamado.SLA_PROCESSO);
+
+
+      if (sla_atendimento.SLA > Dt_criacao)
+        sla_atendimento.EstaNoSLA = true;
+      return sla_atendimento;
 
     }
 
-    private static DateTime CalcularSLASubCategoria(int SLA)
+    private static DateTime CalcularSLASubCategoria(Sub_categoria sub_Categoria)
     {
       return DateTime.Now;
     }
 
-    public class Filtros
+    public class SLA_ATENDIMENTO
     {
-      public string Nu_protocolo { get; set; }
+      public DateTime SLA { get; set; }
+      public bool EstaNoSLA { get; set; } = false;
     }
 
   }
