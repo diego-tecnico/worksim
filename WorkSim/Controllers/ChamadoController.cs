@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WorkSim.Models;
@@ -9,6 +10,7 @@ using WorkSim.Models.Banco;
 
 namespace WorkSim.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   public class ChamadoController : Controller
   {
@@ -58,7 +60,6 @@ namespace WorkSim.Controllers
       }
     }
 
-
     private static SLA_ATENDIMENTO ObterPrazoDoChamado(DateTime Dt_criacao, string Tp_chamado, Sub_categoria sub_Categoria)
     {
 
@@ -78,11 +79,6 @@ namespace WorkSim.Controllers
         sla_atendimento.EstaNoSLA = true;
       return sla_atendimento;
 
-    }
-
-    private static DateTime CalcularSLASubCategoria(Sub_categoria sub_Categoria)
-    {
-      return DateTime.Now;
     }
 
     public class SLA_ATENDIMENTO

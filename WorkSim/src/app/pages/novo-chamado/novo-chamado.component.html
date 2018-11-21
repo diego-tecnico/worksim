@@ -72,12 +72,12 @@
         <input id="icon_prefix" type="text" class="validate">
         <i (click)="buscarPorCep()" class="material-icons prefix buscar-por-codigo">send</i>
       </div>
+      {{ufs | json}}
       <div class="input-field col s4 m2 input-endereco">
         <select id="uf" name="uf">
-          <option value="" disabled selected>UF</option>
-          <option>DF</option>
-          <option>SP</option>
-          <option>GO</option>
+          <option disabled selected>UF</option>
+          <option *ngFor="let uf of ufs">{{ uf.nome }}</option>
+
         </select>
       </div>
       <div class="input-field col s4 m6">

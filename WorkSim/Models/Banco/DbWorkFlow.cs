@@ -19,6 +19,8 @@ namespace WorkSim.Models.Banco
     public DbSet<Categoria_setor> Categoria_setor { get; set; }
     public DbSet<Sub_categoria> Sub_categoria { get; set; }
     public DbSet<Script> Script { get; set; }
+    public DbSet<Usuario> Usuario { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

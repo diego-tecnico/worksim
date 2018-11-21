@@ -19,7 +19,6 @@ export class NovoChamadoComponent implements OnInit {
   textoTrumbowyg = "";
   arquivos = [];
 
-
   constructor() { }
 
 
