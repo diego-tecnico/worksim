@@ -17,24 +17,21 @@
         <label for="cpfCnpj">CPF/CNPJ</label>
       </div>
       <div class="input-field col s3 m2">
-        <select id="tipo" name="tipo">
+        <select id="setor" name="setor" (change)="obterCategorias(setor.id)">
           <option value="" disabled selected>Setor</option>
-          <option>Call Center</option>
-          <option>Auditoria</option>
+          <option *ngFor="let setor of setores" [ngValue]="setor.id" >{{ setor.no_setor }}</option>
         </select>
       </div>
       <div class="input-field col s3 m2">
-        <select id="tipo" name="tipo">
+        <select id="categoria" name="categoria" (change)="obterSubCategorias(categoria.id)">
           <option value="" disabled selected>Categoria</option>
-          <option>Categoria 01</option>
-          <option>Categoria 02</option>
+          <option *ngFor="let categoria of categorias" [ngValue]="categoria.id">{{ categoria.no_categoria_setor }}</option>
         </select>
       </div>
       <div class="input-field col s3 m2">
-        <select id="tipo" name="tipo">
+        <select id="origem" name="origem">
           <option value="" disabled selected>Origem</option>
-          <option>Call Center</option>
-          <option>Auditoria</option>
+          <option *ngFor="let setor of setores" [ngValue]="setor.id">{{ setor.no_setor }}</option>
         </select>
       </div>
     </div>
@@ -42,43 +39,42 @@
       <div class="input-field col s3 m3">
         <select id="tipo" name="tipo">
           <option value="" disabled selected>Responsável</option>
-          <option>Joao</option>
-          <option>Maria</option>
+          <option *ngFor="let usuario of usuarios" [ngValue]="usuario.id">{{ usuario.nome }}</option>
         </select>
       </div>
-      <div class="input-field col s1 m1">
+      <div class="col s3 m1">
         <p>
-          <input type="checkbox" id="todos" />
+          <input type="checkbox" [checked]="tiposDeChk[0].value" (change)="chkTodos($event.target)" id="todos" />
           <label for="todos">Todos</label>
         </p>
       </div>
-      <div class="input-field col s1 m1">
+      <div class="col s3 m1">
         <p>
-          <input type="checkbox" id="aberto" />
+          <input type="checkbox" [checked]="tiposDeChk[1].value" (change)="chkFiltros($event.target, tiposDeChk[1])" id="aberto" />
           <label for="aberto">Aberto</label>
         </p>
       </div>
-      <div class="input-field col s1 m1">
+      <div class="col s3 m1">
         <p>
-          <input type="checkbox" id="reaberto" />
+          <input type="checkbox" [checked]="this.tiposDeChk[2].value" (change)="chkFiltros($event.target, tiposDeChk[2])" id="reaberto" />
           <label for="reaberto">Reaberto</label>
         </p>
       </div>
-      <div class="input-field col s1 m1">
+      <div class="col s3 m1">
         <p>
-          <input type="checkbox" id="devolvido" />
+          <input type="checkbox" [checked]="this.tiposDeChk[3].value" (change)="chkFiltros($event.target, tiposDeChk[3])" id="devolvido" />
           <label for="devolvido">Devolvido</label>
         </p>
       </div>
-      <div class="input-field col s1 m1">
+      <div class="col s3 m1">
         <p>
-          <input type="checkbox" id="finalizado" />
+          <input type="checkbox" [checked]="this.tiposDeChk[4].value" (change)="chkFiltros($event.target, tiposDeChk[4])" id="finalizado" />
           <label for="finalizado">Finalizado</label>
         </p>
       </div>
-      <div class="input-field col s2 m2">
+      <div class="col s3 m2">
         <p>
-          <input type="checkbox" id="ematendimento" />
+          <input type="checkbox" [checked]="this.tiposDeChk[5].value" (change)="chkFiltros($event.target, tiposDeChk[5])" id="ematendimento" />
           <label for="ematendimento">Em Atendimento</label>
         </p>
       </div>

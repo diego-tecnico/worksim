@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { HttpAppClient } from '../../shared/http-app-client.service';
 import { IFiltros } from '../../interfaces/IFiltros';
+import { IFiltrosUsuario } from '../../interfaces/IFiltrosUsuario';
 
 @Injectable()
 export class PesquisarChamadosService {
@@ -19,6 +20,21 @@ export class PesquisarChamadosService {
                     .map((x) => {
                         return x;
                     });
+  }
+
+  public obterUsuarios(filtros: IFiltrosUsuario): Observable<any> {
+
+    return this.http.post('api/usuario/listar', filtros)
+      .map((x) => {
+        return x;
+      });
+  }
+
+  public obterCategoria(setorId: number): Observable<any> {
+    return this.http.get('api/categoria/' + setorId)
+      .map((x) => {
+        return x;
+      });
 
   }
 
@@ -34,6 +50,15 @@ export class PesquisarChamadosService {
   public obterFiltros(): Observable<any> {
 
     return this.http.get('api/chamados/filtros')
+      .map((x) => {
+        return x;
+      });
+
+  }
+
+  public obterSetores(): Observable<any> {
+
+    return this.http.get('api/setor')
       .map((x) => {
         return x;
       });

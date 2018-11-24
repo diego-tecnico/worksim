@@ -10,7 +10,7 @@ using WorkSim.Models.Banco;
 
 namespace WorkSim.Controllers
 {
-  [Authorize]
+  //[Authorize]
   [Route("api/[controller]")]
   public class UsuarioController : Controller
   {
