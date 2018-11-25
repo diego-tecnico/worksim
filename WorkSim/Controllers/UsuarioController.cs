@@ -161,7 +161,7 @@ namespace WorkSim.Controllers
 
                 var verificarLogin = _db.Usuario.Any(x => x.Login == usuario.Login && dadosDoUsuario.Login != usuario.Login);
                 if (verificarLogin)
-                    return BadRequest("Login não disponivel");
+                    return BadRequest("Login não disponivel !");
 
                 dadosDoUsuario.Nome = usuario.Nome;
                 dadosDoUsuario.Login = usuario.Login;
