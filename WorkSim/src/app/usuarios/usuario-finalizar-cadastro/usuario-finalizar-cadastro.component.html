@@ -1,0 +1,190 @@
+<section class="container-fluid no-padding">
+  <section class="row no-gutters">
+    <section class="col">
+      <section class="page--breadcrumb">
+        <ul class="breadcrumbs breadcrumbs--list">
+          <li class="breadcrumbs__item">
+            <a [routerLink]="['/','usuarios','listar']" class="breadcrumbs__element">Usuários</a>
+          </li>
+          <li class="breadcrumbs__item breadcrumbs__item_active">
+            <a [routerLink]="['/','usuarios','novo']" class="breadcrumbs__element">Concluir Cadastro</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </section>
+  <section class="row no-gutters">
+    <section class="col">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Concluir Cadastro</h3>
+        </div>
+        <form id="pdg--form">
+          <div class="box-body">
+            <section class="row no-gutters">
+              <section class="col centralizar">
+                <label class="usuario--foto add--photo" for="imgUser">
+                  <img id="img" src="../../../assets/img/face1.jpg" alt="Foto do Usuário">
+                  <input type="file" id="imgUser" accept="image/*" name="image" class="fileupload">
+                </label>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="filial">Filial</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="filial" class="form-control input-lg pdg--input" type="text" autofocus name="userName" [(ngModel)]="pessoa.no_pessoa">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="CNPJ">CNPJ</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="CNPJ" class="form-control input-lg pdg--input" type="text" name="CNPJ" (change)="verificarCnpj(finalizarCadastro.gs_pessoa_juridica.nr_cnpj)" [(ngModel)]="finalizarCadastro.gs_pessoa_juridica.nr_cnpj" [textMask]="{mask: maskCNPJ}">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="empresa">Empresa</label>
+                  <div class="wrap-input100 validate-input">
+                    <select id="empresa" class="form-control input-lg pdg--input" [(ngModel)]='finalizarCadastro.gs_filial.cd_pessoa_empresa' name="empresa">
+                      <option *ngFor="let empresa of empresas" [ngValue]="empresa.cd_pessoa"> {{ empresa.no_pessoa }} </option>
+                    </select>
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col">
+                <section class="form-group">
+                  <label class="label-input100" for="email">Email</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="email" class="form-control input-lg pdg--input" type="text" name="email" (change)="verificarEmail(usuario.no_email)" [(ngModel)]="usuario.no_email">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                    <label class="label-input100" for="telefone">Tel. Celular</label>
+                    <div class="wrap-input100 validate-input">
+                      <input id="telefone" class="form-control input-lg pdg--input" type="text" name="telefone" [textMask]="{mask: maskTelefone}" [(ngModel)]="finalizarCadastro.gs_contato.nr_celular">
+                      <span class="focus-input100"></span>
+                    </div>
+                </section>
+              </section>
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="telefone-empresarial">Tel. Empresarial</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="telefone-empresarial" class="form-control input-lg pdg--input" type="text" name="telefone-empresarial" [textMask]="{mask: maskFixo}" [(ngModel)]="finalizarCadastro.gs_contato.nr_residencial">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+
+            <hr />
+
+            <section class="row no-gutters">
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="uf">UF</label>
+                  <div class="wrap-input100 validate-input">
+                    <select id="uf" class="form-control input-lg pdg--input" (change)='obterMunicipios(finalizarCadastro.gs_endereco.cd_uf)' [(ngModel)]='finalizarCadastro.gs_endereco.cd_uf' name="uf">
+                      <option *ngFor="let uf of ufs" [ngValue]="uf.cd_uf"> {{ uf.cd_uf }} </option>
+                    </select>
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="municipio">Municipio</label>
+                  <div class="wrap-input100 validate-input">
+                    <select id="municipios" class="form-control input-lg pdg--input"  (change)='obterBairros(finalizarCadastro.gs_endereco.cd_municipio)' [(ngModel)]='finalizarCadastro.gs_endereco.cd_municipio' name="municipio">
+                      <option *ngFor="let municipio of municipios" [ngValue]="municipio.cd_municipio"> {{ municipio.ds_municipio }} </option>
+                    </select>
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="bairro">Bairro</label>
+                  <div class="wrap-input100 validate-input">
+                    <select id="bairros" class="form-control input-lg pdg--input" [(ngModel)]='finalizarCadastro.gs_endereco.cd_bairro' name="municipio">
+                      <option *ngFor="let bairro of bairros" [ngValue]="bairro.cd_bairro"> {{ bairro.ds_bairro }} </option>
+                    </select>
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+
+            <section class="row no-gutters">
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="cep">CEP</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="cep" class="form-control input-lg pdg--input" type="text" autocomplete="new-name" [(ngModel)]="finalizarCadastro.gs_endereco.nr_cep" name="cep">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="numeroEndereco">Nº Endereço</label>
+                  <div class="wrap-input100 validate-input">
+                    <input class="form-control input-lg pdg--input" type="text" id="numeroEndereco" autocomplete="new-name" [(ngModel)]="finalizarCadastro.gs_endereco.nr_endereco" name="numeroEndereco">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+
+            <section class="row no-gutters">
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="endereco">Endereço</label>
+                  <div class="wrap-input100 validate-input">
+                    <input class="form-control input-lg pdg--input" type="text" id="endereco" autocomplete="new-name" [(ngModel)]="finalizarCadastro.gs_endereco.ds_endereco" name="endereco">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="complemento">Complemento</label>
+                  <div class="wrap-input100 validate-input">
+                    <input class="form-control input-lg pdg--input" id="complemento" autocomplete="new-name" [(ngModel)]="finalizarCadastro.gs_endereco.ds_complemento" name="complemento">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+          </div>
+          <div class="box-footer">
+            <button type="button" (click)='finalizarCadastroEmpresa()' class="btn--pdg btn--success">Salvar</button>
+            <button type="button" class="btn--pdg btn--danger">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </section>
+</section>
+
+
+<section class="preloader" *ngIf="carregando">
+  <section class="loader"></section>
+</section>

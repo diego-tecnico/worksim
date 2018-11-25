@@ -1,0 +1,108 @@
+@import "~assets/css/sass/variables"
+@import "~assets/css/sass/mixins"
+
+.page--breadcrumb
+  max-width: auto
+  padding-left: 0
+  color: #4163AF
+  border-left: none
+  margin-top: 10px
+  margin-bottom: 15px
+  &.fav
+    color: $darkYellowBtn
+    border-left: none
+    > .breadcrumbs
+      --breadcrumbsTextColor: $darkYellowBtn
+      --breadcrumbsTextColorActive: $darkYellowBtn
+    .breadcrumbs__element
+      &:hover
+        color: $darkYellowBtn
+  &.classificado
+    color: $classificacao
+    border-left: none
+    > .breadcrumbs
+      --breadcrumbsTextColor: $classificacao
+      --breadcrumbsTextColorActive: $classificacao
+  @media screen and (min-width: 768px)
+    border-left: 3px solid #4163AF
+    margin-top: 0
+    padding: 15px 20px 15px 10px
+    &.fav
+      border-left: 3px solid $darkYellowBtn
+    &.classificado
+      border-left: 3px solid $classificacao
+
+
+.breadcrumbs
+  --cssuiBreadcrumbsTextColor: var(--breadcrumbsTextColor)
+  --cssuiBreadcrumbsTextColorActive: var(--breadcrumbsTextColorActive)
+  --cssuiBreadcrumbsDivider: var(--breadcrumbsDivider)
+  --cssuiBreadcrumbsDividerColor: var(--breadcrumbsDividerColor, inherit)
+  --cssuiBreadcrumbsDividerSize: var(--breadcrumbsDividerSize, 16px)
+  --cssuiBreadcrumbsIndent:  var(--breadcrumbsIndent, 8px)
+  padding-left: 0
+  margin-top: 0
+  margin-bottom: 0
+  list-style: none
+  display: flex
+  flex-wrap: wrap
+
+.breadcrumbs
+  --breadcrumbsTextColor: #4163AF
+  --breadcrumbsTextColorActive: #4163AF
+  font-weight: bold
+
+.breadcrumbs--list
+  --breadcrumbsDivider: "/"
+  --breadcrumbsDividerSize: 10px
+  @media screen and (min-width: 768px)
+    --breadcrumbsDividerSize: 20px
+
+.breadcrumbs__item
+  text-transform: uppercase
+  font-family: $family
+  font-size: 0.7rem
+  letter-spacing: 2px
+  display: inline-block
+  position: relative
+  margin-bottom: 8px
+  padding-right: calc(var(--cssuiBreadcrumbsDividerSize) + var(--cssuiBreadcrumbsIndent))
+  margin-right: var(--cssuiBreadcrumbsIndent)
+  color: var(--cssuiBreadcrumbsTextColor)
+  &::after
+    content: var(--cssuiBreadcrumbsDivider)
+    width: var(--cssuiBreadcrumbsDividerSize)
+    height: var(--cssuiBreadcrumbsDividerSize)
+    line-height: 1
+    text-align: center
+    font-family: "Arial", sans-serif
+    font-size: var(--cssuiBreadcrumbsDividerSize)
+    color: var(--cssuiBreadcrumbsDividerColor)
+    position: absolute
+    top: 50%
+    right: 0
+    transform: translateY(-50%)
+  .dropdown-item
+    font-size: 0.7rem
+  @media screen and (min-width: 768px)
+    margin-bottom: 0
+
+.breadcrumbs__item_active
+  margin-right: 0
+  padding-right: 0
+  color: var(--cssuiBreadcrumbsTextColorActive)
+  &::after
+    display: none
+
+.breadcrumbs__element
+  cursor: pointer
+  color: inherit
+  &:hover
+    color: #4163AF
+
+.breadcrumb-casas-icon
+  padding-right: 5px
+
+.not-active
+  pointer-events: none
+  cursor: default

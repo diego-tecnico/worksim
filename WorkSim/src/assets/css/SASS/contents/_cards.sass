@@ -1,0 +1,158 @@
+// <CARD CONTENT>
+
+.pdg--card
+  background: white
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12)
+  position: relative
+  border-bottom: 5px solid $blueSystem
+  min-height: 150px
+  padding: 25px 20px
+  margin-bottom: 15px
+  transition: .2s ease-out
+  &:hover
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15)
+  &.fav
+    border-bottom: 5px solid $darkYellowBtn
+    .pdg--card--title
+      color: $darkYellowBtn
+      > a
+        color: $darkYellowBtn
+    .card--classificacao
+      background: $darkYellowBtn
+  &.classificado
+    border-bottom: 5px solid $classificacao
+    .pdg--card--title
+      color: $classificacao
+      > a
+        color: $classificacao
+    .card--classificacao
+      background: $classificacao
+
+
+.pdg--card--header
+  font-family: $family
+  font-size: 0.7rem
+  color: $greyNoRegistry
+  .pdg--card--header--date
+    float: left
+    width: 100%
+    @media screen and (min-width: 768px)
+      width: auto
+      float: right
+    > i
+      margin-right: 3px
+  .pdg--card--header--info
+    float: left
+    > i
+      margin-right: 3px
+
+.card--footer
+  border-top: 1px solid #f0f0f0
+  padding: 5px 3px 0
+  .card--classificacao
+    font-family: $family
+    font-size: 0.5rem
+    padding: 4px 7px
+    background: $blueSystem
+    text-transform: uppercase
+    color: white
+    font-weight: 700
+    letter-spacing: 3px
+  .card--footer--btns
+    padding-top: 10px
+
+.pdg--card--body
+  margin-top: 10px
+  font-family: $family
+  .pdg--card--title
+    text-transform: uppercase
+    font-size: 1.1rem
+    font-weight: 700
+    color: $blueSystem
+    line-height: 1
+    &.master--data
+      margin-bottom: 0
+    > a
+      color: $blueSystem
+    > input
+      display: none
+    > small
+      font-size: 0.8rem
+      text-transform: none
+      font-family: $family
+      font-weight: 700
+  .card--text
+    font-size: 0.9rem
+    color: $greyNoRegistry
+
+.pdg--info--author
+  height: 70px
+  width: 70px
+  overflow: hidden
+  border-radius: 100%
+  border: 1px solid #efefef
+  float: left
+  img
+    width: 100%
+
+.pdg--info--author--text
+  +calcWidth('100% - 78px')
+  height: 70px
+  float: left
+  margin-left: 8px
+  color: $greyNoRegistry
+  word-break: break-all
+  display: flex
+  align-items: center
+  > p
+    font-family: $family
+    margin: 0
+
+.ttpNomeAutor--large
+  max-width: 80% !important
+.ttpNomeAutor--medium
+  max-width: 60% !important
+.ttpNomeAutor--small
+  max-width: 40% !important
+
+.pdg--dl
+  margin-top: 15px
+  margin-bottom: 0 !important
+  > dt
+    color: $darkGrey
+    font-family: $family
+    font-size: 1rem
+    font-weight: 700
+    margin-top: 15px
+  > dd
+    color: $mediumGrey
+    text-align: justify
+    font-family: $family
+    font-size: 0.9rem
+    margin-top: 5px
+
+.pdg--dl--custom
+  dt
+    color: $mediumGrey
+    text-align: justify
+    font-family: $family
+    font-size: 0.9rem
+  dd
+    color: $greyNoRegistry
+  &.semRelator
+    dt.dadoRelator
+      display: none
+      + dd
+        display: none
+  &.semParecer
+    dt.dadoParecer
+      display: none
+      + dd
+        display: none
+
+.cursor--pointer
+  cursor: pointer
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12)
+  transition: .2s ease-out
+  &:hover
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15)

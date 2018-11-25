@@ -1,0 +1,57 @@
+@import "~assets/css/sass/variables"
+@import "~assets/css/sass/mixins"
+
+.system--date
+  height: 35px
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.08)
+  margin-top: 4px
+  margin-bottom: 5px
+  transition: .2s ease-out
+  &:hover,
+  &:focus
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15)
+  .label--data,
+  .label--data--silver
+    cursor: pointer
+    color: white
+    transition: 0.2s ease-out
+
+  .label--data
+    background: $blueSystem
+    border: $blueSystem 1px solid
+    border-radius: 0
+    font-size: 0.7rem
+    &:hover
+      background: #2C6789
+      border: 1px solid #2C6789
+
+  .label--data--silver
+    background: $greyNoRegistry
+    border: $greyNoRegistry 1px solid
+    border-radius: 0
+    &:hover
+      background: $mediumDarkGrey
+      border: 1px solid $mediumDarkGrey
+
+  .input--data,
+  .input--data--silver
+    float: right
+    cursor: pointer
+    font-weight: 700
+    font-style: italic
+    text-align: center
+    letter-spacing: 2px
+    font-size: 0.7rem
+    &:focus
+      box-shadow: none
+      outline: none
+
+
+  .input--data
+    color: white
+    border: 1px solid $blueSystem
+    background: $blueSystem
+
+  .input--data--silver
+    color: $greyNoRegistry
+    background: #fff

@@ -27,7 +27,6 @@ export class HttpAppClient {
     createApplicationJson(headers: HttpHeaders) {
         headers.append('Content-Type', 'application/json');
         headers.append('Accept', 'application/json');
-        //headers.append('Access-Control-Allow-Origin:', '*');
     }
 
     getHeaders(): HttpHeaders {

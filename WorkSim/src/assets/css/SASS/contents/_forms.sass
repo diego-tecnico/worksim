@@ -1,0 +1,100 @@
+#pdg--form
+  height: auto
+  padding: 0rem
+  padding-bottom: 0.25rem
+
+.box-title
+  font-family: $family
+  font-weight: 700
+  color: $greyNoRegistry
+
+.usuario--foto
+  width: 150px
+  height: 150px
+  margin-bottom: 30px
+  position: relative
+  border-radius: 50%
+  overflow: hidden
+  transition: all 0.15s ease-in-out
+  &.add--photo
+    &:hover
+      &::before
+        content: "Adicionar"
+  &.edit--photo
+    &:hover
+      &::before
+        content: "Editar"
+  &:hover
+    &::before
+      position: absolute
+      top: 0
+      left: 0
+      width: 150px
+      height: 150px
+      border-radius: 50%
+      display: flex
+      justify-content: center
+      align-items: center
+      background: rgba(50, 50, 50, 0.80)
+      color: white
+      font-size: 0.6rem
+      font-family: $family
+      font-weight: bold
+      text-transform: uppercase
+      letter-spacing: 2px
+      cursor: pointer
+  > img
+    width: 150px
+    height: 150px
+  > input[type="file"]
+    display: none
+
+.centralizar
+  display: -webkit-flex
+  display: flex
+  -webkit-align-items: center
+  align-items: center
+  -webkit-justify-content: center
+  justify-content: center
+
+.label--atividade
+  font-family: $family
+  font-size: 0.8rem
+  font-weight: 700
+  margin-bottom: 0
+  margin-top: 5px
+
+.wrap--text
+  word-wrap: break-word
+
+.label--input
+  text-transform: uppercase
+  font-family: $family
+  font-size: 0.7rem
+  color: $greyNoRegistry
+  font-weight: 600
+  transition: all 0.15s ease-in-out
+
+.pdg--input
+  border: none
+  outline: 0 !important
+  box-shadow: none
+  border-radius: 0
+  border-bottom: 2px solid $greyNoRegistry
+  color: $greyNoRegistry
+  transition: all 0.15s ease-in-out
+  &:focus
+    border: none
+    outline: 0 !important
+    box-shadow: none
+    border-radius: 0
+    color: $blueSystem
+    border-bottom: 2px solid $blueSystem
+
+.has-error
+  .label--input,
+  .pdg--input
+    color: $darkRedBtn !important
+
+.form-group
+  padding: 0 15px

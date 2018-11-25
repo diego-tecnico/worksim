@@ -1,0 +1,118 @@
+<!-- <aside class="main-sidebar">
+  <section class="sidebar">
+    <section class="user-panel">
+      <section class="pull-left image">
+        <img [(src)]="usuarioService.currentUser.caminhoFoto" class="img-circle" alt="User Image" onError="this.src='../../../../assets/img/face1.jpg'">
+      </section>
+      <section class="pull-left info">
+        <p>{{usuarioService.currentUser.nome}} {{usuarioService.currentUser.sobrenome}}</p>
+        <a href="#">
+          <i class="fa fa-circle text-success"></i> Online</a>
+      </section>
+    </section>
+    <form (ngSubmit)="submitBusca()" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Por Tema..." [(ngModel)]="textoDaPesquisa">
+        <span class="input-group-btn">
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+    <ul class="sidebar-menu" data-widget="tree" *ngFor="let asideItems of menuItems.getAll()">
+      <li class="header">
+        <i class="fa {{asideItems.icon}}"></i>
+        {{asideItems.label}}
+      </li>
+      <li>
+        <ul class="sidebar-menu" data-widget="tree" *ngFor="let asideItem of asideItems.main">
+          <li [routerLinkActive]="['active']" *ngIf="asideItem.type === 'link' && asideItem.state !== ''">
+            <a [routerLink]="['/', asideItem.main_state, asideItem.state]">
+              <i class="fa {{asideItem.icon}}"></i>
+              <span [title]="asideItem.title">{{asideItem.name}}</span>
+              <span class="pull-right-container"></span>
+            </a>
+          </li>
+          <li [routerLinkActive]="['active']" *ngIf="asideItem.type === 'link' && asideItem.state === ''">
+            <a [routerLink]="['/', asideItem.main_state]">
+              <i class="fa {{asideItem.icon}}"></i>
+              <span [title]="asideItem.title">{{asideItem.name}}</span>
+              <span class="pull-right-container"></span>
+            </a>
+          </li>
+          <li [routerLinkActive]="['active']" class="treeview" *ngIf="asideItem.type === 'sub'">
+            <a href="#">
+              <i class="fa {{asideItem.icon}}"></i>
+              <span [title]="asideItem.title">{{asideItem.name}}</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li [routerLinkActive]="['active']" *ngFor="let chiilditem of asideItem.children">
+                <a [routerLink]="['/', chiilditem.main_state, chiilditem.state]">
+                  <i class="fa {{chiilditem.icon}}"></i>
+                  <span [title]="asideItem.title">{{chiilditem.name}}</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</aside> -->
+
+
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img [routerLink]="['/', 'usuarios', 'editar']" [(src)]="usuarioService.currentUser.caminhoFoto" class="img-circle" alt="Foto do Usuário" onError="this.src='../../../../assets/img/face1.jpg'">
+      </div>
+      <div class="pull-left info">
+        <p>{{usuarioService.currentUser.nome}} {{usuarioService.currentUser.sobrenome}}</p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+
+      <ul class="sidebar-menu" data-widget="tree" *ngFor="let asideItems of itensDoMenu">
+        <li class="header">
+          <i class="fa {{asideItems.icon}}"></i>
+          {{asideItems.label}}
+        </li>
+        
+        <li [routerLinkActive]="['active']" [ngClass]="{'treeview': asideItem.type === 'sub'}" *ngFor="let asideItem of asideItems.main">
+          <a [routerLink]="['/', asideItem.main_state, asideItem.state]" *ngIf="asideItem.type === 'link' && asideItem.state !== ''">
+            <i class="fa {{asideItem.icon}}"></i>
+            <span [title]="asideItem.title">{{asideItem.name}}</span>
+          </a>
+          <a [routerLink]="['/', asideItem.main_state]" *ngIf="asideItem.type === 'link' && asideItem.state === ''">
+            <i class="fa {{asideItem.icon}}"></i>
+            <span [title]="asideItem.title">{{asideItem.name}}</span>
+          </a>
+          <a href="#" *ngIf="asideItem.type === 'sub'">
+            <i class="fa {{asideItem.icon}}"></i>
+            <span [title]="asideItem.title">{{asideItem.name}}</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" *ngIf="asideItem.type === 'sub'">
+            <li [routerLinkActive]="['active']" *ngFor="let chiilditem of asideItem.children">
+              <a [routerLink]="['/', chiilditem.main_state, chiilditem.state]">
+                <i class="fa {{chiilditem.icon}}"></i>
+                <span [title]="asideItem.title">{{chiilditem.name}}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        {{ fixLayout.tamanhoTela() }}
+      </ul>
+    <!-- /.sidebar-menu -->
+  </section>
+  <!-- /.sidebar -->
+</aside>

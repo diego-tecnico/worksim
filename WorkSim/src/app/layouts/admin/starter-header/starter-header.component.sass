@@ -1,0 +1,78 @@
+.main-header
+  width: 100%
+
+.navbar-custom-menu
+  float: right
+  > .navbar-nav
+    flex-direction: row
+    > li
+      > a
+        @media screen and (max-width: 991px)
+          position: relative
+          padding: 0.5rem 1rem
+          padding-top: 0
+      > .dropdown-menu
+        @media screen and (max-width: 991px)
+          position: absolute
+          width: 90%
+          right: 5%
+    > .user-menu
+      > a
+        padding: 0 15px
+        line-height: 54px
+      > .dropdown-menu
+        @media screen and (max-width: 991px)
+          right: 0
+
+.nav-link
+  height: 54px
+  padding-top: 0
+  padding-bottom: 0
+  &.dropdown-toggle
+    &::after
+      display: none
+  > i
+    line-height: 54px
+
+.navbar-expand-lg
+  justify-content: flex-end
+  .navbar-nav
+    .nav-link
+      @media screen and (max-width: 767px)
+        padding-right: 0.5rem
+        padding-left: 0.5rem
+      @media screen and (min-width: 992px)
+        padding-right: 1rem
+        padding-left: 1rem
+
+.justify-start
+  margin-right: auto
+
+.logo
+  height: 54px
+  > span
+    height: 54px
+    line-height: 54px
+
+
+.perfis--drop
+  > a.nav-link
+    // color: white
+    &:hover,
+    &:active
+      // background: rgba(0, 0, 0, 0.1)
+      // color: #f6f6f6
+
+.btn-danger
+  background-color: #dd4b39 !important
+  border-color: #d73925 !important
+  color: white !important
+
+.sidebar-toggle
+  display: block
+
+.logo-topo
+  max-width: 143px;
+
+.mini-logo-topo
+  max-width: 46px;

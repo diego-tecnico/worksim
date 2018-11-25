@@ -1,44 +1,91 @@
-import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/auth/login/login.component';
-import { PesquisarChamadosComponent } from './pages/pesquisar-chamados/pesquisar-chamados.component';
-import { Error404Component } from './pages/error/error404/error404.component';
-import { Error500Component } from './pages/error/error500/error500.component';
-import { Error403Component } from './pages/error/error403/error403.component';
-import { DetalhesChamadoComponent } from './pages/detalhes-chamado/detalhes-chamado.component';
-import { NovoChamadoComponent } from './pages/novo-chamado/novo-chamado.component';
+
+import {Routes} from '@angular/router';
+import {AdminLayoutComponent} from './layouts/admin/admin-layout.component';
+import {AuthLayoutComponent} from './layouts/auth/auth-layout.component';
+import {AuthGuard} from './guards/auth.guard';
+
 export const AppRoutes: Routes = [
   {
-    path: 'chamados',
-    component: PesquisarChamadosComponent,
-    pathMatch: 'full'
-  },
-  {
-    path: 'chamado/novo',
-    component: NovoChamadoComponent,
-  },
-  {
-    path: 'chamados/:id',
-    component: DetalhesChamadoComponent
-  },
-  {
-    path: 'auth/login',
-    component: LoginComponent
+    path: '',
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'cross',
+        pathMatch: 'full'
+      },
+      {
+        path: 'cross',
+        loadChildren: './dashboard/dashboard.module#DashboardModule',
+        data: {
+          breadcrumb: 'Dashboards'
+        }
+      },
+      {
+        path: 'usuarios',
+        loadChildren: './usuarios/usuarios.module#UsuariosModule',
+        data: {
+          breadcrumb: 'Usuários'
+        }
+      },
+      {
+        path: 'planos',
+        loadChildren: './planos/planos.module#PlanosModule',
+        data: {
+          breadcrumb: 'Planos'
+        }
+      },
+      {
+        path: 'treino',
+        loadChildren: './treino/treino.module#TreinoModule',
+        data: {
+          breadcrumb: 'Treinos'
+        }
+      },
+      {
+        path: 'alunos',
+        loadChildren: './alunos/alunos.module#AlunosModule',
+        data: {
+          breadcrumb: 'Alunos'
+        }
+      },
+      {
+        path: 'fornecedor',
+        loadChildren: './fornecedor/fornecedor.module#FornecedorModule',
+        data: {
+          breadcrumb: 'Fornecedor'
+        }
+      },
+      {
+        path: 'financeiro',
+        loadChildren: './financeiro/financeiro.module#FinanceiroModule',
+        data: {
+          breadcrumb: 'Fornecedor'
+        }
+      },
+      {
+        path: 'profissional',
+        loadChildren: './profissional/profissional.module#ProfissionalModule',
+        data: {
+          breadcrumb: 'Profissional'
+        }
+      }
+    ]
   },
   {
     path: '',
-    component: PesquisarChamadosComponent
-    //component: LoginComponent
-  },
-  {
-    path: 'error/error500',
-    component: Error500Component
-  },
-  {
-    path: 'error/error403',
-    component: Error403Component
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: 'authentication',
+        loadChildren:
+          './authentication/authentication.module#AuthenticationModule'
+      }
+    ]
   },
   {
     path: '**',
-    component: Error404Component
+    redirectTo: 'error/404'
   }
 ];

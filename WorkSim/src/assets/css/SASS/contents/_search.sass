@@ -1,0 +1,278 @@
+.search--header
+  width: 100%
+  height: 10px
+  background: $blueSystem
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12)
+  transition: .2s ease-out
+
+.search--container
+  background: #f0f0f0
+  padding: 15px
+  margin-bottom: 25px
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12)
+  transition: .2s ease-out
+  &:hover
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15)
+  @media (min-width: 768px)
+    padding: 0 15px 0
+
+
+.search--content
+  padding: 2.5px 15px
+  text-align: center
+  @media (min-width: 768px)
+    padding: 15px 2.5px 0
+  > span
+    height: 50px
+    line-height: 50px
+    font-style: italic
+    text-transform: uppercase
+    font-weight: 700
+    color: $greyNoRegistry
+
+.search--content--input
+  width: 100%
+  height: 50px
+  position: relative
+  padding-left: 15px
+  margin-bottom: 5px
+  background: #fff
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15)
+  font-family: $family
+  font-size: 0.8rem
+  font-weight: 700
+  color: $mediumDarkGrey
+  border: none
+  appearance: none
+  outline: none
+  transition: all 0.3s ease
+  &:hover
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15)
+  &:focus
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15)
+    border-bottom: 3px solid $blueSystem
+  &::placeholder
+    letter-spacing: 1.5px
+  +placeholder($greyNoRegistry)
+  &::-webkit-search-cancel-button
+    appearance: none
+  + span
+    color: $greyNoRegistry
+    font-size: 1.1rem
+
+#search--advanced
+  transition: all 0.15s cubic-bezier(0.85, 0.01, 0.2, 0.99)
+  &.close--advanced
+    height: 0
+    padding: 5px
+    opacity: 0
+    visibility: hidden
+  &.open--advanced
+    height: auto
+    padding: 5px
+    opacity: 1
+    visibility: visible
+
+.search--selects
+  padding: 5px 0
+
+.search--selects--title
+  font-size: 0.7rem
+  font-family: $family
+  font-weight: 700
+  color: $greyNoRegistry
+  text-transform: uppercase
+  margin-bottom: 3px
+  label
+    margin-bottom: 0
+
+.checkbox
+  margin-top: 15px
+  max-width: 160px
+  height: 30px
+  padding: 7px 0
+  float: left
+  @media screen and (max-width: 767px)
+    float: none
+    margin: 0 auto
+
+input[type="checkbox"]
+  float: left
+  &.switch_1
+    margin-top: 2px
+    font-size: 30px
+    appearance: none
+    width: 1.2em
+    height: 0.6em
+    background: #ddd
+    border-radius: 3em
+    position: relative
+    cursor: pointer
+    outline: none
+    transition: all .2s ease-in-out
+    &:checked
+      background: $blueSystem
+      &::after
+        left: calc(100% - 0.6em)
+    &::after
+      position: absolute
+      content: ""
+      width: 0.6em
+      height: 0.6em
+      border-radius: 50%
+      background: #fff
+      box-shadow: 0 0 .25em rgba(0,0,0,.3)
+      transform: scale(.7)
+      left: 0
+      transition: all .2s ease-in-out
+
+.checkLabelFone
+  margin-top: 2px
+  margin-bottom: 0
+  margin-left: 7px
+  font-family: $family
+  font-size: 0.8rem
+  float: right
+  @media screen and (max-width: 767px)
+    float: left
+
+.filter--button
+  min-width: 121px
+  width: auto
+  height: auto
+  float: left
+  padding: 15px 0
+  @media (max-width: 767px)
+    width: 100%
+    padding: 0 0 5px
+    text-align: center
+
+.CS--buttons
+  width: auto
+  height: auto
+  float: right
+  padding: 15px 0
+  button
+    &.submit--search
+      float: right
+    &.clear--search
+      float: left
+  @media (max-width: 767px)
+    width: 100%
+    padding: 0 0 15px
+    text-align: center
+    button
+      &.clear--search
+        padding: 0 0 5px
+
+.search--buttons
+  padding: 0 5px
+  a
+    line-height: 30px
+  button
+    padding: 7px 20px
+  a,
+  button
+    cursor: pointer
+    font-family: $family
+    text-transform: uppercase
+    font-size: 0.7rem
+    font-weight: 700
+    letter-spacing: 2px
+    color: white
+    border: none
+    outline: none
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15)
+    transition: all 0.2s ease
+    &:hover
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15)
+    &:active
+      box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.15)
+    &.filter--search
+      color: $mediumGrey
+      background: transparent
+      box-shadow: none
+      padding: 0 5px
+      &:hover,
+      &:active
+        color: $darkGrey
+    &.submit--search
+      background: $blueSystem
+      &:hover
+        background: #003756
+      &:active
+        background: #002a42
+    &.clear--search
+      margin-right: 15px
+      background: transparent
+      color: $lightRedBtn
+      box-shadow: none
+      &:hover,
+      &:active
+        background: transparent
+        color: $darkRedBtn
+  @media (max-width: 767px)
+    a,
+    button
+      width: 100%
+      margin-top: 10px
+      &.clear--search
+        margin-right: 0
+        margin-bottom: 0
+
+.search--selects--keywords
+  width: calc(100% - 36px)
+
+.btn--keywords
+  border: none
+  border-radius: 0
+  background: $blueSystem
+  color: white
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15)
+  transition: all 0.2s ease
+  &:hover
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15)
+    background: $darkBlueBtn
+  &:active
+    background: $darkBlueBtn !important
+    box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.15) !important
+.btn--save--keywords
+  border: none
+  border-radius: 0
+  background: $greenLoader
+  color: white
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15)
+  transition: all 0.2s ease
+  &:hover
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15)
+    background: #29664B
+  &:active
+    background: #29664B !important
+    box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.15) !important
+.btn--cancel--keywords
+  border: none
+  border-radius: 0
+  background: $darkRedBtn
+  color: white
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15)
+  transition: all 0.2s ease
+  &:hover
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15)
+    background: #7A1A00
+  &:active
+    background: #7A1A00 !important
+    box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.15) !important
+
+.sb--r
+  padding-right: 0rem !important
+  @media screen and (min-width: 768px)
+    padding-right: 0.25rem !important
+.sb--l
+  padding-left: 0rem !important
+  @media screen and (min-width: 768px)
+    padding-left: 0.25rem !important
+
+.pagination--text
+  float: left
+  @media screen and (min-width: 768px)
+    float: right

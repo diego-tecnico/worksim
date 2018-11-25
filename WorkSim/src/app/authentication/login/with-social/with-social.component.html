@@ -1,0 +1,29 @@
+<section class="container-fluid">
+    <section class="row">
+        <section id="info" class="col-lg-8">
+        <a href="">
+            <img src="assets/img/login/logoInFoco.png" id="logoInFoco" class="img-responsive" alt="Logo InFoco Solutions">
+        </a>
+        </section>
+        <section id="login" class="col-lg-4 col-sm-12">
+            <section id="card" class="col-lg-12">
+                <section id="spaceLogoPortal" class="col-lg-12 col-xs-12">
+                    <img src="assets/img/login/logoPortal_v1.png" id="logoPortal" class="img-responsive" alt="Logo Portal Datagov">
+                </section>
+                <section id="inputs-login">
+                    <form action="" method="">
+                        <input type="text" class="form-control text-login" name="userName" [(ngModel)]="userName" placeholder="USUÁRIO">
+                        <input type="password" class="form-control text-login" name="password" [(ngModel)]="password" placeholder="SENHA">
+                        <input type="submit" (click)="loginPasswordAndName()" name="btnLogar" value="ENTRAR" id="bntEntrar" class="col-8">
+                    </form>
+                    <a href="#">Esqueceu sua senha?</a>
+                </section>
+            </section>
+            <section id="footer">
+                <section class="logoAzure">
+                    <img src="assets/img/login/azure.png" id="logoAzure" class="img-responsive" alt="Logo Azure">
+                </section>
+            </section>
+        </section>
+    </section>
+</section>

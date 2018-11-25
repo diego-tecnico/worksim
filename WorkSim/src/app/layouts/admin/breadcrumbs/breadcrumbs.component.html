@@ -1,0 +1,22 @@
+<section class="content-header" *ngIf="!hide">
+  <span *ngFor="let breadcrumb of breadcrumbs; let last = last">
+      <section *ngIf="last" class="pull-left title--header">
+        <span class="title--page">
+            {{ breadcrumb.title }}
+            <small class="title--description" *ngIf="breadcrumb.description"> / {{ breadcrumb.description }}</small>
+        </span>
+      </section>
+  </span>
+  <ol class="breadcrumb">
+    <li>
+      <a [routerLink]="'/'">
+        <i class="fa fa-home"></i>
+      </a>
+    </li>
+    <li class="" *ngFor="let breadcrumb of breadcrumbs" [ngClass]="breadcrumb.status === false ? 'not-active': ''">
+      <a [routerLink]="breadcrumb.url">
+        {{breadcrumb.title}}
+      </a>
+    </li>
+  </ol>
+</section>

@@ -1,0 +1,64 @@
+<header class="main-header">
+
+  <a [routerLink]="['/']" class="logo">
+    <span class="logo-mini">
+      <img src="../../../../assets/img/logo/icone-sem-fundo.png" class="mini-logo-topo" alt="IMG">
+    </span>
+    <span class="logo-lg">
+      <img src="../../../../assets/img/logo/WorkSim_src_assets_public_images_logo_SaúdeSimLogoorizontalNegativo.png" class="logo-topo" alt="IMG">
+    </span>
+  </a>
+  <nav class="navbar navbar-expand-lg no-padding" role="navigation">
+    <a href="#" class="sidebar-toggle justify-start" data-toggle="push-menu" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li class="nav-item dropdown perfis--drop" *ngIf="perfilCarregado" >
+          <a href="#" class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-building" aria-hidden="true"></i>
+            <!--<span *ngIf="exibirPerfis" class="badge badge-light">
+              {{ perfis.length - 1}}
+            </span>
+            <span class="large--screen" *ngIf="!naoTemPerfilVinculada">{{ ultimoPerfil.apelido || 'Nenhum Perfil Vinculado'}}</span>-->
+            <span class="large--screen danger" *ngIf="naoTemPerfilVinculada">Nenhum Perfil Vinculado</span>
+            <i *ngIf="exibirPerfis" class="fa fa-chevron-circle-down large--screen" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" *ngIf="exibirPerfis" >
+            <a class="dropdown-item" *ngFor="let perfil of perfis" href="javascript:void(0)" (click)="selecionarPerfil(perfil)" >
+          <!--    {{ perfil.apelido }}-->
+            </a>
+          </div>
+        </li>
+        <li class="nav-item dropdown user user-menu">
+          <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img [(src)]="usuarioService.currentUser.caminhoFoto" class="user-image" alt="User Image" onError="this.src='../../../../assets/img/face1.jpg'">
+            <span class="large--screen">{{usuarioService.currentUser.nome}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="user-header">
+              <img [routerLink]="['/', 'usuarios', 'editar']" [(src)]="usuarioService.currentUser.caminhoFoto" class="img-circle" alt="User Image" onError="this.src='../../../../assets/img/face1.jpg'">
+              <p>
+                {{usuarioService.currentUser.nome}} {{usuarioService.currentUser.sobrenome}}
+              <!--  <small>{{usuarioService.currentUser.cargoDoUsuario.nome}}</small>-->
+              </p>
+            </li>
+            <li class="user-footer">
+              <div class="pull-left">
+                <a [routerLink]="['/', 'usuarios', 'editar']" class="btn btn-default btn-flat">
+                  Editar
+                </a>
+              </div>
+              <div class="pull-right">
+                <a href="authentication/login" class="btn btn-danger btn-flat" (click)="logout()">
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  Sair
+                </a>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

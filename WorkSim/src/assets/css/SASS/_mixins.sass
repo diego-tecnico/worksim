@@ -1,0 +1,26 @@
+=placeholder($color)
+  &::placeholder,
+  &:-moz-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
+  &::-webkit-input-placeholder
+    color: $color
+
+=buttonsColor($color1, $color2)
+  background: $color1
+  border: 1px solid $color1
+  &.button--active
+  	background: $color1 !important
+  	border-color: $color1
+  &:hover
+    border-color: $color1 !important
+    color: white !important
+  &::before
+    background: $color2 !important
+  &::after
+    background: $color1 !important
+
+=calcWidth($expression)
+  width: -moz-calc(#{$expression})
+  width: -webkit-calc(#{$expression})
+  width: calc(#{$expression})
