@@ -28,7 +28,7 @@ namespace WorkSim.Controllers
     {
       var usuarioNaoConfere = new ResultadoDaAutenticacao
       {
-        Message = "Usuário e/ou Senha não conferem!"
+        Message = "Usuário e/ou Senha não conferem, tente novamernte!"
       };
 
       var usuarioOuSenhaNaoInformado = string.IsNullOrWhiteSpace(usuario?.UserName) ||

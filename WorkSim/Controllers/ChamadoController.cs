@@ -17,7 +17,7 @@ namespace WorkSim.Controllers
     private readonly DbWorkFlow _db;
 
     public ChamadoController(DbWorkFlow db)
-    {
+    { 
       _db = db;
     }
 
