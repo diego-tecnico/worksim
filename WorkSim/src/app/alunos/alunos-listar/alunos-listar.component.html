@@ -4,7 +4,7 @@
       <section class="page--breadcrumb">
         <ul class="breadcrumbs breadcrumbs--list">
           <li class="breadcrumbs__item breadcrumbs__item_active">
-            <a [routerLink]="['/','alunos','listar']" class="breadcrumbs__element">Alunos</a>
+            <a [routerLink]="['/','alunos','listar']" class="breadcrumbs__element">Colaboradores</a>
           </li>
         </ul>
       </section>
@@ -14,12 +14,12 @@
     <section class="col">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Lista de Alunos</h3>
+          <h3 class="box-title">Quantidade   de Colaboradores</h3>
           <span class="badge badge--pdg--primary">{{ quantidadeDeUsuarios }}</span>
           <div class="box-tools pull-right">
             <a [routerLink]="['/', 'alunos', 'novo']" class="btn--pdg btn--primary">
               <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
-              <span class="large--screen">Novo Aluno</span>
+              <span class="large--screen">Novo Colaborador</span>
             </a>
           </div>
         </div>
@@ -30,13 +30,13 @@
                 Nome
               </div>
               <div class="cell col text-truncate">
-                E-mail
+                Login
               </div>
               <div class="cell col text-truncate">
-                Telefone
+                Perfil
               </div>
               <div class="cell col text-truncate">
-                CPF
+                Setor
               </div>
               <div class="cell col text-truncate">
                 Status
@@ -44,21 +44,21 @@
               <div class="cell col-md-1 text-truncate">
               </div>
             </div>
-            <div class="row" *ngFor="let aluno of alunos">
+            <div class="row " *ngFor="let usuario of usuarios">
               <div class="cell col wrap--text" data-title="Nome">
-                {{aluno.gs_pessoa.no_pessoa }}
+                {{ usuario.nome }}
               </div>
               <div class="cell col wrap--text" data-title="E-mail">
-                {{aluno.gs_usuario.no_email }}
+                {{ usuario.login }}
               </div>
               <div class="cell col-md-3 wrap--text" data-title="E-mail">
-                {{aluno.gs_contato.nr_celular }}
+                {{ usuario.perfil }}
               </div>
               <div class="cell col wrap--text" data-title="Telefone">
-                {{aluno.gs_pessoa_fisica.nr_cpf || '-' }}
+                {{ usuario.nomeSetor || '-' }}
               </div>
               <div class="cell col wrap--text" data-title="Status">
-                {{aluno.gs_usuario.ee_ativo }}
+                {{ usuario.st_registro_ativo }}
                 <!--<pdg-bloquear-desbloquear [bloqueado]="usuario.bloqueado" (retorno)="bloquearOuDesbloquear($event, usuario)" ></pdg-bloquear-desbloquear>-->
               </div>
               <div class="cell col-md-1 wrap--text" data-title="Editar">
@@ -66,12 +66,12 @@
                   <!--<button type="button" class="btn-sm btn btn--primary--pdg" [mdl-tooltip]="ttpEditarUsuario" mdl-tooltip-position="bottom" [routerLink]="['/', 'usuarios', 'config']" [queryParams]="{id: usuario.id}">
                     <i class="fa fa-edit" aria-hidden="true"></i>
                   </button>-->
-                   <button type="button" class="btn-sm btn btn--primary--pdg" [mdl-tooltip]="ttpEditarUsuario" mdl-tooltip-position="bottom" [routerLink]="['/', 'alunos', aluno.gs_pessoa.cd_pessoa, 'editar']">
+                   <button type="button" class="btn-sm btn btn--primary--pdg" [mdl-tooltip]="ttpEditarUsuario" mdl-tooltip-position="bottom" [routerLink]="['/', 'alunos', usuario.id, 'editar']">
                     <i class="fa fa-edit" aria-hidden="true"></i>
                   </button>
                 </section>
                 <mdl-tooltip #ttpEditarUsuario="mdlTooltip">
-                  Editar Aluno
+                  Editar Colaborador
                 </mdl-tooltip>
               </div>
             </div>

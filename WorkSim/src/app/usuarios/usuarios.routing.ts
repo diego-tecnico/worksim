@@ -3,6 +3,9 @@ import { UsuarioPainelComponent } from './usuario-perfil/usuario-perfil.componen
 import { UsuarioSenhaComponent } from './usuario-senha/usuario-senha.component';
 import { UsuarioConfiguracaoComponent } from './usuario-configuracao/usuario-configuracao.component';
 import { UsuarioFinalizarCadastroComponent } from './usuario-finalizar-cadastro/usuario-finalizar-cadastro.component';
+import { UsuarioListarComponent } from './usuario-listar/usuario-listar.component';
+import { UsuarioNovoComponent } from './usuario-novo/usuario-novo.component';
+import { UsuariosEditarComponent } from './usuarios-editar/usuarios-editar.component';
 
 export const UsuariosRoutes: Routes = [
   // {
@@ -10,6 +13,21 @@ export const UsuariosRoutes: Routes = [
   //     redirectTo: 'perfil',
   //     pathMatch: 'full'
   // },
+
+  {
+    path: 'listar',
+    component: UsuarioListarComponent,
+    data: {
+      hide: true
+    }
+  },
+  {
+    path: 'novo',
+    component: UsuarioNovoComponent,
+    data: {
+      hide: true
+    }
+  },
   {
     path: 'finalizar-cadastro',
     component: UsuarioFinalizarCadastroComponent,
@@ -18,8 +36,8 @@ export const UsuariosRoutes: Routes = [
     }
   },
   {
-    path: 'editar',
-    component: UsuarioPainelComponent,
+    path: ':id/editar',
+    component: UsuariosEditarComponent,
     data: {
       hide: true
     }

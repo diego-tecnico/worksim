@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationRoutes } from './authentication.routing';
 import { UsuariosService } from './../usuarios/usuarios.service';
 import { UsuarioEsqueciSenhaComponent } from './usuario-esqueci-senha/usuario-esqueci-senha.component';
-import { UsuarioNovoComponent } from './usuario-novo/usuario-novo.component';
 
 @NgModule({
   imports: [
@@ -17,8 +16,7 @@ import { UsuarioNovoComponent } from './usuario-novo/usuario-novo.component';
     ReactiveFormsModule
   ],
   declarations: [
-    UsuarioEsqueciSenhaComponent,
-    UsuarioNovoComponent
+    UsuarioEsqueciSenhaComponent
   ],
   providers: [ UsuariosService ]
 })

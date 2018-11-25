@@ -1,42 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { UsuariosService } from '../usuarios.service';
+import { IUsuario } from '../../models/IUsuario';
 import 'rxjs/add/operator/finally';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
+import { window } from 'rxjs/operators';
 import { IUsuarios, ISetor } from '../../models/IFiltroUsuario';
+import { UsuariosService } from '../usuarios.service';
 import { SetorService } from '../../setor/setor.service';
 
 declare var $: any;
 declare var jQuery: any;
 
-
 @Component({
-  selector: 'pdg-usuario-novo',
-  templateUrl: './usuario-novo.component.html',
-  styleUrls: ['./usuario-novo.component.sass']
+  selector: 'usuarios-editar',
+  templateUrl: './usuarios-editar.component.html',
+  styleUrls: ['./usuarios-editar.component.sass']
 })
-export class UsuarioNovoComponent implements OnInit {
+export class UsuariosEditarComponent implements OnInit {
 
   carregando = false;
   usuario: IUsuarios = {};
   setores: ISetor[] = [];
 
-  
   constructor(private usuariosService: UsuariosService,
+    private setorService: SetorService,
     private toastrService: ToastrService,
     private router: Router,
-    private setorService: SetorService,
-    private  location: Location) { }
+    private location: Location,
+    private activeRoute: ActivatedRoute) { }
 
   public maskTelefone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   public maskFixo = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   public maskCPF = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
 
   ngOnInit() {
+    this.carregando = true;
     this.obterSetores();
+    this.activeRoute.params.subscribe((n) => {
+      this.obterUsuario(n.id);
+    })
   }
-
 
   obterSetores() {
     this.carregando = true;
@@ -50,19 +54,40 @@ export class UsuarioNovoComponent implements OnInit {
       })
   }
 
+  obterUsuario(Id: number) {
+    this.usuariosService.obterColaborador(Id)
+          .subscribe((x) => {
+            this.usuario = x.usuario;
+            console.log(this.usuario);
+          })
+  }
 
-  novoUsuario() {
+
+  editarUsuario() {
     this.carregando = true;
 
-    this.usuariosService.inserirUsuario(this.usuario)
+    this.usuariosService.editarColaborador(this.usuario)
       .finally(() => {
         this.carregando = false;
       })
-      .subscribe((resultado) => {
-        this.toastrService.success("Usuário cadastrado com sucesso.");
-        this.router.navigateByUrl('usuarios/listar');
-      });
+      .subscribe((x) => {
+        console.log(x);
+          this.toastrService.success(x.message);
+          this.router.navigateByUrl('/usuarios/listar');
+
+      })
   }
+
+  //verificarEmail(email: string) {
+  //  this.usuariosService.verificarEmailNovoCadastro(email)
+  //    .subscribe((x) => {
+  //      const msg = x.okMessage;
+  //      if (msg) {
+  //        console.log(msg);
+  //      }
+  //    });
+  //}
+
   cancelar() {
     this.location.back();
   }

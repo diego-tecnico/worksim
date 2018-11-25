@@ -63,8 +63,6 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     AuthLayoutComponent,
     BreadcrumbsComponent,
     TitleComponent,
-    UsuarioNovoComponent,
-    UsuarioListarComponent,
     GruposListarComponent,
   ],
   imports: [

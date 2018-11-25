@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UsuariosService } from '../usuarios.service';
 import { IUsuario } from './../../models/IUsuario';
 import { ToastrService } from 'ngx-toastr';
+import { IUsuarios } from '../../models/IFiltroUsuario';
 
 //const swal = require('sweetalert');
 
@@ -13,23 +14,31 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsuarioListarComponent implements OnInit {
 
-  usuarios: IUsuario[];
-  quantidadeUsuarios = 0;
+  usuarios: IUsuarios[] = [];
+
+  filtros: IUsuarios = {};
+
+  quantidadeDeUsuarios = 0;
   carregando = false;
-  constructor(public usuarioService: UsuariosService,
-              private toastrService: ToastrService) {
+  constructor(public usuariosService: UsuariosService,
+    private toastrService: ToastrService) {
   }
 
   ngOnInit() {
+    this.obterColaboradores();
   }
 
-
-  bloquearOuDesbloquear(bloquearOudesbloquear: boolean, usuario: any) {
-    if (!bloquearOudesbloquear) {
-      this.bloquearUsuario(usuario);
-    } else {
-      this.desbloquearUsuario(usuario);
-    }
+  obterColaboradores() {
+    this.carregando = true;
+    this.usuariosService.obterColaboradores(this.filtros)
+      .finally(() => {
+        this.carregando = false;
+      })
+      .subscribe((x) => {
+        this.usuarios = x.usuarios;
+        this.quantidadeDeUsuarios = this.usuarios.length;
+        console.log(this.usuarios);
+      })
   }
 
   bloquearUsuario(usuario: any) {

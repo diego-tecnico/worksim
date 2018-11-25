@@ -39,6 +39,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { HighlightDirective } from './hightlight/highlight.directive';
 import { BloquearDesbloquearComponent } from './bloquear-desbloquear/bloquear-desbloquear.component';
+import { SetorService } from '../setor/setor.service';
 
 @NgModule({
   imports: [
@@ -127,7 +128,8 @@ import { BloquearDesbloquearComponent } from './bloquear-desbloquear/bloquear-de
     MenuItems,
     HttpAppClient,
     DashboardService,
-    EnderecoService
+    EnderecoService,
+    SetorService
   ]
 })
 export class SharedModule { }

@@ -1,3 +1,13 @@
+.radio-group__label
+  + input
+    &:checked
+      + .radio-group__label
+        &::before
+          content: "NÃO"
+    + .radio-group__label
+      &::before
+        content: "SIM"
+
 @font-face
   font-family: Poppins-Regular
   src: url('../../../assets/css/SASS/fonts/poppins/Poppins-Regular.ttf')
@@ -26,24 +36,6 @@
   font-family: Raleway-Bold
   src: url('../../../assets/css/SASS/fonts/raleway/Raleway-Bold.ttf')
 
-a
-  font-family: Poppins-Regular
-  font-size: 14px
-  line-height: 1.7
-  color: #666666
-  margin: 0px
-  transition: all 0.4s
-  -webkit-transition: all 0.4s
-  -o-transition: all 0.4s
-  -moz-transition: all 0.4s
-  &:focus
-    outline: none !important
-  &:hover
-    text-decoration: none
-    color: #5480e2
-
-h1,h2,h3,h4,h5,h6
-  margin: 0px
 
 p
   font-family: Poppins-Regular
@@ -51,10 +43,6 @@ p
   line-height: 1.7
   color: #666666
   margin: 0px
-
-ul, li
-  margin: 0px
-  list-style-type: none
 
 input,
 textarea
@@ -69,16 +57,6 @@ textarea
       color: transparent
       color: #acacac
 
-button
-  outline: none !important
-  border: none
-  background: transparent
-  &:hover
-	   cursor: pointer
-
-iframe
-  border: none !important
-
 .container-contact100
   width: 100%
   min-height: 100vh
@@ -92,10 +70,10 @@ iframe
   align-items: center
   padding: 15px
   background: #0250c5
-  background: -webkit-linear-gradient(to top, #16a085, #333333)
-  background: -o-linear-gradient(to top, #16a085, #333333)
-  background: -moz-linear-gradient(to top, #16a085, #333333)
-  background: linear-gradient(to top, #16a085, #333333)
+  background: -webkit-linear-gradient(to top, #3797AC, #333333)
+  background: -o-linear-gradient(to top, #3797AC, #333333)
+  background: -moz-linear-gradient(to top, #3797AC, #333333)
+  background: linear-gradient(to top, #3797AC, #333333)
   position: relative
   z-index: 1
   &::before
@@ -155,7 +133,6 @@ iframe
   line-height: 1.5
   text-transform: uppercase
   width: 100%
-  padding-bottom: 11px
 
 .input100
   display: block
@@ -167,7 +144,8 @@ iframe
   line-height: 1.2
   padding: 0 25px
 
-input.input100
+input.input100,
+select.input100
   height: 55px
 
 .focus-input100
@@ -179,11 +157,11 @@ input.input100
   left: -1px
   pointer-events: none
   border: 1px solid
-  border-color: #16a085
-  border-color: -webkit-linear-gradient(45deg, #16a085, #333333)
-  border-color: -o-linear-gradient(45deg, #16a085, #333333)
-  border-color: -moz-linear-gradient(45deg, #16a085, #333333)
-  border-color: linear-gradient(45deg, #16a085, #333333)
+  border-color: #3797AC
+  border-color: -webkit-linear-gradient(45deg, #3797AC, #333333)
+  border-color: -o-linear-gradient(45deg, #3797AC, #333333)
+  border-color: -moz-linear-gradient(45deg, #3797AC, #333333)
+  border-color: linear-gradient(45deg, #3797AC, #333333)
   visibility: hidden
   opacity: 0
   -webkit-transition: all 0.4s
@@ -233,11 +211,11 @@ input.input100
   min-width: 150px
   height: 55px
   border-radius: 27px
-  background: #16a085
-  background: -webkit-linear-gradient(45deg, #16a085, #333333)
-  background: -o-linear-gradient(45deg, #16a085, #333333)
-  background: -moz-linear-gradient(45deg, #16a085, #333333)
-  background: linear-gradient(45deg, #16a085, #333333)
+  background: #3797AC
+  background: -webkit-linear-gradient(45deg, #3797AC, #333333)
+  background: -o-linear-gradient(45deg, #3797AC, #333333)
+  background: -moz-linear-gradient(45deg, #3797AC, #333333)
+  background: linear-gradient(45deg, #3797AC, #333333)
   position: relative
   z-index: 1
   -webkit-transition: all 0.4s

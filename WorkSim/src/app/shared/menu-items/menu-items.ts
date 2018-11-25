@@ -39,69 +39,69 @@ const MENUITEMS = [
     icon: 'fa-th-large',
     main: [
       {
-        main_state: 'alunos',
-        state: 'listar',
-        name: 'Alunos',
-        title: 'Alunos',
-        type: 'link',
-        icon: 'fa-users'
-      },
-      {
-        main_state: 'treino',
-        state: 'tipo-treino',
-        name: 'TipoTreino',
-        title: 'Tipo treino',
-        type: 'link',
-        icon: 'fa-users'
-      },
-      {
-        main_state: 'profissional',
-        state: 'listar',
-        name: 'Profissional',
-        title: 'Profissional',
-        type: 'link',
-        icon: 'fa-users'
-      },
-      {
-        main_state: 'planos',
-        state: 'listar',
-        name: 'Planos',
-        title: 'Planos',
-        type: 'link',
-        icon: 'fa-columns'
-      },
-      {
-        main_state: 'tipo',
-        state: 'listar',
-        name: 'Tipo de treinos',
-        title: 'Tipo de Treinos',
-        type: 'link',
-        icon: 'fa-archive'
-      },
-      {
-        main_state: 'treino',
-        state: 'listar',
-        name: 'Treinos',
-        title: 'Treinos',
-        type: 'link',
-        icon: 'fa-crosshairs'
-      },
-      {
         main_state: 'usuarios',
-        state: 'finalizar-cadastro',
-        name: 'Finalizar Cadastro',
-        title: 'Finalizar Cadastro',
-        type: 'link',
-        icon: 'fa-users'
-      },
-      {
-        main_state: 'categoria',
         state: 'listar',
-        name: 'Categoria',
-        title: 'Categoria',
+        name: 'Colaboradores',
+        title: 'Colaboradores',
         type: 'link',
         icon: 'fa-users'
       }
+      //{
+      //  main_state: 'treino',
+      //  state: 'tipo-treino',
+      //  name: 'TipoTreino',
+      //  title: 'Tipo treino',
+      //  type: 'link',
+      //  icon: 'fa-users'
+      //},
+      //{
+      //  main_state: 'profissional',
+      //  state: 'listar',
+      //  name: 'Profissional',
+      //  title: 'Profissional',
+      //  type: 'link',
+      //  icon: 'fa-users'
+      //},
+      //{
+      //  main_state: 'planos',
+      //  state: 'listar',
+      //  name: 'Planos',
+      //  title: 'Planos',
+      //  type: 'link',
+      //  icon: 'fa-columns'
+      //},
+      //{
+      //  main_state: 'tipo',
+      //  state: 'listar',
+      //  name: 'Tipo de treinos',
+      //  title: 'Tipo de Treinos',
+      //  type: 'link',
+      //  icon: 'fa-archive'
+      //},
+      //{
+      //  main_state: 'treino',
+      //  state: 'listar',
+      //  name: 'Treinos',
+      //  title: 'Treinos',
+      //  type: 'link',
+      //  icon: 'fa-crosshairs'
+      //},
+      //{
+      //  main_state: 'usuarios',
+      //  state: 'finalizar-cadastro',
+      //  name: 'Finalizar Cadastro',
+      //  title: 'Finalizar Cadastro',
+      //  type: 'link',
+      //  icon: 'fa-users'
+      //},
+      //{
+      //  main_state: 'categoria',
+      //  state: 'listar',
+      //  name: 'Categoria',
+      //  title: 'Categoria',
+      //  type: 'link',
+      //  icon: 'fa-users'
+      //}
     ]
   },
   {

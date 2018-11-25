@@ -30,13 +30,6 @@ export const AppRoutes: Routes = [
         }
       },
       {
-        path: 'tipo',
-        loadChildren: './tipo/tipo.module#TipoModule',
-        data: {
-          breadcrumb: 'Tipo'
-        }
-      },
-      {
         path: 'planos',
         loadChildren: './planos/planos.module#PlanosModule',
         data: {
@@ -48,13 +41,6 @@ export const AppRoutes: Routes = [
         loadChildren: './treino/treino.module#TreinoModule',
         data: {
           breadcrumb: 'Treinos'
-        }
-      },
-      {
-        path: 'produto',
-        loadChildren: './produto/produto.module#ProdutoModule',
-        data: {
-          breadcrumb: 'Produto'
         }
       },
       {
@@ -83,13 +69,6 @@ export const AppRoutes: Routes = [
         loadChildren: './profissional/profissional.module#ProfissionalModule',
         data: {
           breadcrumb: 'Profissional'
-        }
-      },
-      {
-        path: 'categoria',
-        loadChildren: './categoria/categoria.module#CategoriaModule',
-        data: {
-          breadcrumb: 'Categoria'
         }
       }
     ]

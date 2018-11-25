@@ -52,20 +52,11 @@
               </section>
             </section>
             <section class="row no-gutters">
-              <section class="col-md-3 col-sm-12">
+              <section class="col-md-6 col-sm-12">
                 <section class="form-group">
                   <label class="label-input100" for="nomeUsuario">Login</label>
                   <div class="wrap-input100 validate-input">
                     <input id="nomeUsuario" class="form-control input-lg pdg--input" type="text" autofocus name="nomeUsuario" [(ngModel)]="usuario.login">
-                    <span class="focus-input100"></span>
-                  </div>
-                </section>
-              </section>
-              <section class="col-md-3 col-sm-12">
-                <section class="form-group">
-                  <label class="label-input100" for="senha">Senha</label>
-                  <div class="wrap-input100 validate-input">
-                    <input id="senha" class="form-control input-lg pdg--input" type="text" autofocus name="senha" [(ngModel)]="usuario.senha">
                     <span class="focus-input100"></span>
                   </div>
                 </section>
@@ -87,7 +78,7 @@
             <hr />
           </div>
           <div class="box-footer">
-            <button type="button"  (click)='novoUsuario()' class="btn--pdg btn--success">Salvar</button>
+            <button type="button" (click)='editarUsuario()' class="btn--pdg btn--success">Salvar</button>
             <button type="button" (click)='cancelar()' class="btn--pdg btn--danger">Cancelar</button>
           </div>
         </form>

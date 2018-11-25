@@ -5,6 +5,7 @@ import { IUsuario } from './../../models/IUsuario';
 import { ToastrService } from 'ngx-toastr';
 import { IAluno } from '../../models/IAluno';
 import { UsuariosService } from '../../usuarios/usuarios.service';
+import { IUsuarios } from '../../models/IFiltroUsuario';
 
 //const swal = require('sweetalert');
 
@@ -15,7 +16,10 @@ import { UsuariosService } from '../../usuarios/usuarios.service';
 })
 export class AlunosListarComponent implements OnInit {
 
-  alunos: IAluno[] = [];
+  usuarios: IUsuarios[] = [];
+
+  filtros: IUsuarios = {};
+
   quantidadeDeUsuarios = 0;
   carregando = false;
   constructor(public usuariosService: UsuariosService,
@@ -23,19 +27,19 @@ export class AlunosListarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.obterAlunos();
+    this.obterColaboradores();
   }
 
-  obterAlunos() {
+  obterColaboradores() {
     this.carregando = true;
-    this.usuariosService.obterAlunos()
+    this.usuariosService.obterColaboradores(this.filtros)
       .finally(() => {
         this.carregando = false;
       })
       .subscribe((x) => {
-        this.alunos = x.alunos;
-        this.quantidadeDeUsuarios = this.alunos.length;
-        console.log(this.alunos);
+        this.usuarios = x.usuarios;
+        this.quantidadeDeUsuarios = this.usuarios.length;
+        console.log(this.usuarios);
       })
   }
 
