@@ -1,0 +1,104 @@
+<!-- <section class="container-fluid no-padding">
+  <section class="row no-gutters">
+    <section class="col-lg-8 col-md-6 institucional">
+      <section id="info">
+        <a href="https://www.infocosolutions.com.br">
+          <img src="assets/img/login/logoInFoco.png" id="logoInFoco" class="img-fluid" alt="Logo InFoco Solutions">
+        </a>
+      </section>
+    </section>
+    <section class="col-lg-4 col-md-6 col-sm-12">
+      <section id="login">
+        <section class="row no-gutters">
+          <section class="col">
+            <section id="logoPortal">
+              <img src="assets/img/CrossFit.png" class="img-fluid" alt="Logo Cross Fit">
+            </section>
+          </section>
+        </section>
+        <section class="row no-gutters">
+          <section class="col">
+            <form id="formulario--login" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+              <section class="row">
+                <section class="col" [ngClass]="aplicaCssErro('email')">
+                  <div class="input-group mb-2 textfield">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text icon--textfield" id="basic-addon1">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" name="userName" type="email" formControlName="email" id="email" placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addon1">
+                  </div>
+                  <app-campo-control-erro
+                    [isRecoverPass]="true"
+                    [mostrarErro]="verificaValidTouched('email')"
+                    msgErro="O e-mail é obrigatório.">
+                  </app-campo-control-erro>
+                </section>
+              </section>
+              <section class="row">
+                <section class="col">
+                  <input type="submit" name="btnEnviar" value="Restaurar Senha" class="form-control btn--login">
+                </section>
+              </section>
+              <section class="row">
+                <section class="col text-center">
+                  <a (click)="voltarLogin()" class="forget--password">Voltar para o Login</a>
+                </section>
+              </section>
+            </form>
+          </section>
+        </section>
+        <section class="row no-gutters">
+          <section class="col">
+            <section id="logoAzure">
+              <img src="assets/img/login/azure.png" class="img-fluid" alt="Logo Azure">
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+</section>
+<style>
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus
+  input:-webkit-autofill{
+    border: none;
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.25) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+</style> -->
+
+
+<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+				<span class="contact100-form-title">
+					Recuperar Senha
+				</span>
+
+				<label class="label-input100" for="email">Email</label>
+				<div class="wrap-input100 validate-input">
+					<input id="email" class="form-control input-lg pdg--input" type="text" name="email" placeholder="ex. exemplo@email.com">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button type="submit" class="contact100-form-btn">
+						<span>
+							Restaurar Senha
+							<i class="zmdi zmdi-arrow-right"></i>
+						</span>
+					</button>
+				</div>
+        <div class="text-center">
+          <span class="txt1" (click)="voltarLogin()">
+            Voltar para o Login
+          </span>
+        </div>
+			</form>
+		</div>
+	</div>

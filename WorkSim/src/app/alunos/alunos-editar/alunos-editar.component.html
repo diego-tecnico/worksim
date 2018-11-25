@@ -1,0 +1,199 @@
+<section class="container-fluid no-padding">
+  <section class="row no-gutters">
+    <section class="col">
+      <section class="page--breadcrumb">
+        <ul class="breadcrumbs breadcrumbs--list">
+          <li class="breadcrumbs__item">
+            <a [routerLink]="['/','alunos','listar']" class="breadcrumbs__element">Alunos</a>
+          </li>
+          <li class="breadcrumbs__item breadcrumbs__item_active">
+            <a [routerLink]="['/','alunos','editar']" class="breadcrumbs__element">Editar</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </section>
+  <section class="row no-gutters">
+    <section class="col">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Editar</h3>
+        </div>
+        <form id="pdg--form">
+          <div class="box-body">
+            <section class="row no-gutters">
+              <section class="col centralizar">
+                <label class="usuario--foto add--photo" for="imgUser">
+                  <img id="img" src="../../../assets/img/face1.jpg" alt="Foto do Usuário">
+                  <input type="file" id="imgUser" accept="image/*" name="image" class="fileupload">
+                </label>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="filial">Aluno</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="aluno" class="form-control input-lg pdg--input" type="text" autofocus name="userName" [(ngModel)]="aluno.gs_pessoa.no_pessoa">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="CPF">CPF</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="CPF" disabled class="form-control input-lg pdg--input" type="text" name="CPF" (change)="verificarCpf(aluno.gs_pessoa_fisica.nr_cpf)" [(ngModel)]="aluno.gs_pessoa_fisica.nr_cpf" [textMask]="{mask: maskCPF}">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="uf">Sexo</label>
+                  <div class="wrap-input100 validate-input">
+                    <select id="sexo" class="form-control input-lg pdg--input" name="sexo" [(ngModel)]="aluno.gs_pessoa_fisica.ir_sexo">
+                      <option value="M"> Masculino </option>
+                      <option value="F"> Feminino </option>
+                    </select>
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="uf">Estado Civil</label>
+                  <div class="wrap-input100 validate-input">
+                    <select id="estadoCivil" class="form-control input-lg pdg--input" name="estadoCivil" [(ngModel)]="aluno.gs_pessoa_fisica.ir_estado_civil">
+                      <option value="S"> Solteiro </option>
+                      <option value="C"> Casado </option>
+                    </select>
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="email">Data Nascimento</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="dataNascimento" class="form-control input-lg pdg--input" [(ngModel)]="aluno.gs_pessoa_fisica.dt_nascimento" type="text" name="dataNascimento">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="email">Email</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="email" class="form-control input-lg pdg--input" type="text" name="email" [(ngModel)]="aluno.gs_usuario.no_email" (change)="verificarEmail(aluno.gs_usuario.no_email)">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="telefone">Tel. Celular</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="telefone" class="form-control input-lg pdg--input" type="text" name="telefone" [(ngModel)]="aluno.gs_contato.nr_celular" [textMask]="{mask: maskTelefone}">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+            <hr />
+            <section class="row no-gutters">
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="uf">UF</label>
+                  <div class="wrap-input100 validate-input">
+                    <select id="uf" class="form-control input-lg pdg--input" (change)='obterMunicipios(aluno.gs_endereco.cd_uf)' name="uf" [(ngModel)]="aluno.gs_endereco.cd_uf">
+                      <option *ngFor="let uf of ufs" [ngValue]="uf.cd_uf"> {{ uf.cd_uf }} </option>
+                    </select>
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="municipio">Municipio</label>
+                  <div class="wrap-input100 validate-input">
+                    <select id="municipios" class="form-control input-lg pdg--input"  name="municipio" (change)='obterBairros(aluno.gs_endereco.cd_municipio)' [(ngModel)]="aluno.gs_endereco.cd_municipio">
+                      <option *ngFor="let municipio of municipios" [ngValue]="municipio.cd_municipio"> {{ municipio.ds_municipio }} </option>
+                    </select>
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="bairro">Bairro</label>
+                  <div class="wrap-input100 validate-input">
+                    <select id="bairros" class="form-control input-lg pdg--input" name="municipio" [(ngModel)]="aluno.gs_endereco.cd_bairro">
+                      <option *ngFor="let bairro of bairros" [ngValue]="bairro.cd_bairro"> {{ bairro.ds_bairro }} </option>
+                    </select>
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+
+            <section class="row no-gutters">
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="cep">CEP</label>
+                  <div class="wrap-input100 validate-input">
+                    <input id="cep" class="form-control input-lg pdg--input" type="text" autocomplete="new-name" name="cep" [(ngModel)]="aluno.gs_endereco.nr_cep">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="numeroEndereco">Nº Endereço</label>
+                  <div class="wrap-input100 validate-input">
+                    <input class="form-control input-lg pdg--input" type="text" id="numeroEndereco" autocomplete="new-name" name="numeroEndereco" [(ngModel)]="aluno.gs_endereco.nr_endereco">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+
+            <section class="row no-gutters">
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="endereco">Endereço</label>
+                  <div class="wrap-input100 validate-input">
+                    <input class="form-control input-lg pdg--input" type="text" id="endereco" autocomplete="new-name" name="endereco" [(ngModel)]="aluno.gs_endereco.ds_endereco">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <label class="label-input100" for="complemento">Complemento</label>
+                  <div class="wrap-input100 validate-input">
+                    <input class="form-control input-lg pdg--input" id="complemento" autocomplete="new-name" name="complemento" [(ngModel)]="aluno.gs_endereco.ds_complemento">
+                    <span class="focus-input100"></span>
+                  </div>
+                </section>
+              </section>
+            </section>
+          </div>
+          <div class="box-footer">
+            <button type="button" (click)='editarAluno()' class="btn--pdg btn--success">Salvar</button>
+            <button type="button" (click)='cancelar()' class="btn--pdg btn--danger">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </section>
+</section>
+
+
+<section class="preloader" *ngIf="carregando">
+  <section class="loader"></section>
+</section>

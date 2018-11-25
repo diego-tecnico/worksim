@@ -1,0 +1,34 @@
+@import "~assets/css/sass/variables"
+@import "~assets/css/sass/mixins"
+
+.not-active
+  pointer-events: none
+  cursor: default
+
+.title--header
+  display: none
+  position: relative
+  @media (min-width: 992px)
+    display: block
+    padding: 10px 0
+    margin-bottom: 15px
+  &::before
+    content: ''
+    width: 3px
+    height: 100%
+    background: $blueSystem
+    position: absolute
+    top: 0
+    left: 0
+
+.title--page
+  text-transform: uppercase
+  font-size: 1rem
+  color: $blueSystem
+  margin-left: 10px
+
+a.title--page
+  font-size: 1rem
+
+.title--description
+  font-size: 0.8rem

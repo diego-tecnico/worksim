@@ -1,0 +1,207 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Source Sans Pro;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100vh;
+}
+
+.container-fluid {
+    height: 100vh;
+}
+
+    .container-fluid .row {
+        height: 100vh;
+    }
+
+#info {
+    display: none;
+}
+
+#logoInFoco {
+    max-width: 300px;
+}
+
+#login {
+    height: 100%;
+    background: #FEAC5E;
+    background: -moz-linear-gradient(132deg, #3D9970 0%, #0073b7 50%, #f39c12 100%);
+    background: -webkit-linear-gradient(132deg, #3D9970 0%, #0073b7 50%, #f39c12 100%);
+    background: linear-gradient(132deg, #3D9970 0%, #0073b7 50%, #f39c12 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3D9970', endColorstr='#f39c12',GradientType=1 );
+    background-size: 400% 400%;
+    animation: BackgroundGradient 20s ease-in-out infinite;
+}
+
+
+
+#card {
+    height: auto;
+}
+
+#spaceLogoPortal {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+#logoPortal {
+    max-width: 200px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+#inputs-login {
+    padding: 0 30px;
+    text-align: center;
+}
+
+    #inputs-login > form > input[type="text"],
+    #inputs-login > form > input[type="password"] {
+        width: 90%;
+        margin-left: 5%;
+        height: 40px;
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 2px solid white !important;
+        padding: 0px 25px;
+        background: transparent !important;
+        color: white;
+        outline: none !important;
+        font-size: 0.8em;
+        text-align: left;
+    }
+
+    #inputs-login > form > input[type="submit"] {
+        width: 90%;
+        padding: 10px 18px;
+        border: 1px solid white;
+        background: white;
+        color: #909090;
+        font-size: 0.8em;
+        border-radius: 0px;
+    }
+
+    #inputs-login > form > input::placeholder {
+        color: white;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.8em;
+        text-transform: uppercase;
+        text-align: left;
+    }
+
+    #inputs-login > a {
+        color: white;
+        font-size: 0.7em !important;
+        float: left;
+        margin: 10px 5%;
+    }
+
+/*
+#inputs-login > .input-group span,
+#inputs-login > .input-group input[type="text"],
+#inputs-login > .input-group input[type="password"] {
+border-radius: 0;
+}
+
+
+
+#inputs-login > .input-group .text-login {
+font-size: 1em;
+font-style: italic;
+font-weight: 700; }
+#inputs-login > .input-group .text-login::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: .7em;
+  color: white;
+  text-transform: uppercase; }
+#inputs-login > .input-group .text-login:focus {
+  outline: none;
+  box-shadow: none !important; }
+#inputs-login > .input-group:first-child span,
+#inputs-login > .input-group:first-child input[type="text"],
+#inputs-login > .input-group:first-child input[type="password"] {
+border-bottom: 2px solid white; }
+
+#bntLogar {
+text-align: center;
+margin-top: 25px; }
+
+#bntEntrar {
+min-width: 120px;
+padding: 10px 18px;
+border: 1px solid white;
+background: transparent;
+color: white;
+font-size: .8em;
+border-radius: 50px; }
+
+
+#footer > a {
+font-size: .6em;
+color: white;
+text-decoration: none;
+text-transform: uppercase;
+margin-left: 96px;
+margin-top: 15px; }
+*/
+#footer {
+    width: 100%;
+    height: calc(75px + 66px);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.logoAzure {
+    width: 100%;
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+    .logoAzure > img {
+        max-width: 135px;
+    }
+
+@media (min-width: 768px) {
+    #info {
+        display: block;
+        height: 100%;
+        background: url(../../../../assets/img/login/backgroundCrossLife.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 75px;
+    }
+}
+
+@keyframes BackgroundGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/*# sourceMappingURL=app.css.map */

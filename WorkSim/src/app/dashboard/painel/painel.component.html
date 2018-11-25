@@ -1,0 +1,67 @@
+<section class="container-fluid no-padding">
+  <section class="row no-gutters">
+    <section class="col">
+      <section class="page--breadcrumb">
+        <ul class="breadcrumbs breadcrumbs--list">
+          <li class="breadcrumbs__item breadcrumbs__item_active">
+            <a [routerLink]="['/','Cross','painel']" class="breadcrumbs__element">Dashboard</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </section>
+  <div class="container">
+    <div class="row">
+      <!-- Check-ins x Conclusões -->
+      <div class="card col-sm-6">
+        <div class="card-body">
+          <div class="card-title">
+            <h5 class="">Controle de fluxo</h5>
+          </div>
+          <h6 class="card-subtitle mb-2 text-muted">Check-ins / Conclusões</h6>
+          <p class="card-text">
+            <chart id="checkinConclusoes" [type]="typeCheckinConclusao" [data]="dataCheckinConclusao" [options]="options"></chart>
+          </p>
+        </div>
+        <div class="card-footer footer-grafico">
+          <a href="#" class="btn btn-primary">Detalhes</a>
+        </div>
+      </div>
+      <!-- Alunos Ativos x Inativos -->
+      <div class="card col-sm-6">
+        <div class="card-body">
+          <div class="card-title">
+            <h5 class="">Alunos</h5>
+          </div>
+          <h6 class="card-subtitle mb-2 text-muted">Ativos X Inativos</h6>
+          <p class="card-text">
+            <chart [type]="typeAtivoInativo" [data]="dataAtivoInativo" [options]="options"></chart>
+          </p>
+        </div>
+        <div class="card-footer footer-grafico">
+          <a href="#" class="btn btn-primary">Detalhes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <!-- Faturamento Box x Cantina -->
+      <div class="card-body">
+        <div class="card-title">
+          <h5 class="">Faturamento</h5>
+        </div>
+        <h6 class="card-subtitle mb-2 text-muted">Box x Cantina</h6>
+        <p class="card-text">
+          <chart [type]="typeFaturamentoBoxCantina" [data]="dataFaturamentoBoxCantina" [options]="options"></chart>
+        </p>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-primary">Detalhes</a>
+      </div>
+
+    </div>
+  </div>
+  <section class="preloader" *ngIf="carregando">
+    <section class="loader"></section>
+  </section>
+</section>

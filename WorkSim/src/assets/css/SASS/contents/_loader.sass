@@ -1,0 +1,62 @@
+// <LOADER CODE>
+.initloader,
+.preloader
+  width: 100%
+  height: 100vh
+  position: fixed
+  bottom: 0
+  right: 0
+  z-index: 2000
+  .loader
+    border-top-color: #3D9970
+    &::before
+      border-top-color: #0073B7
+    &::after
+      border-top-color: #F39C12
+
+
+.initloader
+  background: rgba(255, 255, 255, 0.8)
+.preloader
+  background: rgba(50, 50, 50, 0.75)
+
+.loader
+  display: block
+  position: relative
+  left: 50%
+  top: 50%
+  width: 100px
+  height: 100px
+  margin: -50px 0 0 -50px
+  border-radius: 50%
+  border: 3px solid transparent
+  animation: spin 2s linear infinite
+  &::before
+    content: ""
+    position: absolute
+    top: 5px
+    left: 5px
+    right: 5px
+    bottom: 5px
+    border-radius: 50%
+    border: 3px solid transparent
+    -webkit-animation: spin 3s linear infinite
+    animation: spin 3s linear infinite
+  &::after
+    content: ""
+    position: absolute
+    top: 15px
+    left: 15px
+    right: 15px
+    bottom: 15px
+    border-radius: 50%
+    border: 3px solid transparent
+    -webkit-animation: spin 1.5s linear infinite
+    animation: spin 1.5s linear infinite
+
+@keyframes spin
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)

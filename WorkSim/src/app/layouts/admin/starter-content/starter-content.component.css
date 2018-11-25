@@ -1,0 +1,17 @@
+.content{
+    min-height: 100% !important;
+}
+.content-wrapper{
+    min-height: 100%;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+
+}
+@media (min-width: 992px){
+
+}
+@media (min-width: 1200px){
+
+}

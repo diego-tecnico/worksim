@@ -1,0 +1,280 @@
+.scroll--small
+  min-height: 150px
+  overflow-x: hidden
+  overflow-y: visible
+  @media screen and (max-width: 1270px)
+    overflow-y: hidden
+    overflow-x: scroll
+    &::-webkit-scrollbar
+      height: 8px
+      position: fixed
+    &::-webkit-scrollbar-thumb
+      background: #cccccc
+      border-radius: 5px
+    &::-webkit-scrollbar-track
+      background: #f2f2f2
+
+
+
+// TABLE SCROLL
+.table--scroll
+  width: 100%
+  min-width: 920px
+  display: table
+  margin: 0
+  padding: 0 5px
+  > .row
+    background: #fff
+    &:last-child
+      > .cell
+        border-bottom: none
+    &:hover
+      background-color: #f0f0f0
+      cursor: pointer
+    &.header
+      > .cell
+        color: $mediumGrey !important
+        font-family: $family
+        font-size: 0.8rem
+        color: #fff
+        text-transform: uppercase
+        line-height: 1.2
+        font-weight: bold  !important
+        padding-top: 5px
+        padding-bottom: 5px
+    > .cell
+      font-family: $family
+      font-size: 0.8rem
+      color: #666666
+      line-height: 31px
+      font-weight: unset !important
+      padding-top: 5px
+      padding-bottom: 5px
+      border-bottom: 1px solid #f2f2f2
+      > .badge
+        font-size: 0.8rem
+      &::before
+        display: none
+        font-family: $family
+        font-size: 0.8rem
+        color: #808080
+        line-height: 1.2
+        text-transform: uppercase
+        font-weight: unset !important
+        margin-bottom: 13px
+        content: attr(data-title)
+        min-width: 98px
+
+
+// TABLE SCROLL RESPONSIVE
+.table--scroll--responsive
+  width: 100%
+  min-width: 980px
+  display: table
+  margin: 0
+  padding: 0 5px
+  > .row
+    background: #fff
+    &:last-child
+      > .cell
+        border-bottom: none
+    @media screen and (max-width: 768px)
+      border-bottom: 1px solid #f2f2f2
+      padding-bottom: 18px
+      padding-top: 30px
+      padding-right: 15px
+      margin: 0
+    &:hover
+      background-color: #f0f0f0
+      cursor: pointer
+    &.header
+      > .cell
+        color: $mediumGrey !important
+        font-family: $family
+        font-size: 0.8rem
+        color: #fff
+        text-transform: uppercase
+        line-height: 1.2
+        font-weight: bold  !important
+        padding-top: 10px
+        padding-bottom: 10px
+        @media screen and (max-width: 768px)
+          display: none
+      @media screen and (max-width: 768px)
+        padding: 0
+        height: 0px
+    > .cell
+      font-family: $family
+      font-size: 0.8rem
+      color: #666666
+      line-height: 31px
+      font-weight: unset !important
+      padding-top: 5px
+      padding-bottom: 5px
+      border-bottom: 1px solid #f2f2f2
+      @media screen and (max-width: 768px)
+        font-family: $family
+        font-size: 1rem
+        color: #555555
+        display: block
+        border: none
+        padding-left: 30px
+        padding-top: 16px
+        padding-bottom: 16px
+        > .badge
+          font-size: 1rem
+      &::before
+        display: none
+        font-family: $family
+        font-size: 0.8rem
+        color: #808080
+        line-height: 1.2
+        text-transform: uppercase
+        font-weight: unset !important
+        margin-bottom: 13px
+        content: attr(data-title)
+        min-width: 98px
+        @media screen and (max-width: 768px)
+          display: block
+  @media screen and (max-width: 768px)
+    display: block
+    min-width: 100%
+
+
+// TABLE RESPONSIVE
+.table--responsive
+  border-radius: 10px
+  width: 100%
+  display: table
+  margin: 0
+  padding: 0 5px
+  > div,
+  > section
+    > .row
+      background: #fff
+      &:last-child
+        > .cell
+          border-bottom: none
+      @media screen and (max-width: 768px)
+        border-bottom: 1px solid #f2f2f2
+        padding-bottom: 18px
+        padding-top: 30px
+        padding-right: 15px
+        margin: 0
+      &:hover
+        background-color: #f0f0f0
+        cursor: pointer
+      &.header
+        > .cell
+          color: $mediumGrey !important
+          font-family: $family
+          font-size: 0.8rem
+          color: #fff
+          text-transform: uppercase
+          line-height: 1.2
+          font-weight: bold  !important
+          padding-top: 10px
+          padding-bottom: 10px
+          @media screen and (max-width: 768px)
+            display: none
+        @media screen and (max-width: 768px)
+          padding: 0
+          height: 0px
+      > .cell
+        font-family: $family
+        font-size: 0.8rem
+        color: #666666
+        line-height: 31px
+        // font-weight: unset !important
+        padding-top: 5px
+        padding-bottom: 5px
+        border-bottom: 1px solid #f2f2f2
+        @media screen and (max-width: 768px)
+          font-family: $family
+          font-size: 1rem
+          color: #555555
+          display: block
+          border: none
+          padding-left: 30px
+          padding-top: 16px
+          padding-bottom: 16px
+          > .badge
+            font-size: 1rem
+        &::before
+          display: none
+          font-family: $family
+          font-size: 0.8rem
+          color: #808080
+          line-height: 1.2
+          text-transform: uppercase
+          font-weight: unset !important
+          margin-bottom: 13px
+          content: attr(data-title)
+          min-width: 98px
+          @media screen and (max-width: 768px)
+            display: block
+  > .row
+    background: #fff
+    &:last-child
+      > .cell
+        border-bottom: none
+    @media screen and (max-width: 768px)
+      border-bottom: 1px solid #f2f2f2
+      padding-bottom: 18px
+      padding-top: 30px
+      padding-right: 15px
+      margin: 0
+    &:hover
+      background-color: #f0f0f0
+      cursor: pointer
+    &.header
+      > .cell
+        color: $mediumGrey !important
+        font-family: $family
+        font-size: 0.8rem
+        color: #fff
+        text-transform: uppercase
+        line-height: 1.2
+        font-weight: bold  !important
+        padding-top: 10px
+        padding-bottom: 10px
+        @media screen and (max-width: 768px)
+          display: none
+      @media screen and (max-width: 768px)
+        padding: 0
+        height: 0px
+    > .cell
+      font-family: $family
+      font-size: 0.8rem
+      color: #666666
+      line-height: 31px
+      // font-weight: unset !important
+      padding-top: 5px
+      padding-bottom: 5px
+      border-bottom: 1px solid #f2f2f2
+      @media screen and (max-width: 768px)
+        font-family: $family
+        font-size: 1rem
+        color: #555555
+        display: block
+        border: none
+        padding-left: 30px
+        padding-top: 16px
+        padding-bottom: 16px
+        > .badge
+          font-size: 1rem
+      &::before
+        display: none
+        font-family: $family
+        font-size: 0.8rem
+        color: #808080
+        line-height: 1.2
+        text-transform: uppercase
+        font-weight: unset !important
+        margin-bottom: 13px
+        content: attr(data-title)
+        min-width: 98px
+        @media screen and (max-width: 768px)
+          display: block
+  @media screen and (max-width: 768px)
+    display: block

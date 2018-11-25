@@ -1,0 +1,65 @@
+<section class="container-fluid no-padding">
+  <section class="row no-gutters">
+    <section class="col">
+      <section class="page--breadcrumb">
+        <ul class="breadcrumbs breadcrumbs--list">
+          <li class="breadcrumbs__item breadcrumbs__item_active">
+            <a [routerLink]="['/','categoria','listar']" class="breadcrumbs__element">Categoria</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </section>
+  <section class="row no-gutters">
+    <section class="col">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de Categorias</h3>
+          <!-- <span class="badge badge--pdg--primary">{{ quantidadeUsuarios }}</span> -->
+          <div class="box-tools pull-right">
+            <a [routerLink]="['/', 'categoria', 'novo']" class="btn--pdg btn--primary">
+              <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+              <span class="large--screen">Nova Categoria</span>
+            </a>
+          </div>
+        </div>
+        <div class="box-body scroll--small">
+          <div class="table--scroll--responsive">
+            <div class="row header">
+              <div class="cell col text-truncate">
+                Código da Categoria
+              </div>
+              <div class="cell col text-truncate">
+                Nome Categoria
+              </div>
+              <div class="cell col text-truncate">
+                Status
+              </div>
+              
+            </div>
+            <div class="row" *ngFor="let categoria of categorias">
+              <div class="cell col wrap--text" data-title="Código da Categoria">
+                {{categoria.cod_categoria }}
+              </div>
+              <div class="cell col wrap--text" data-title="Nome da Categoria">
+                {{categoria.no_categoria }}
+              </div>
+              <div class="cell col wrap--text" data-title="Status">
+                {{categoria.cod_filial }}
+              </div>
+              <div class="cell col wrap--text" data-title="Status">
+                {{categoria.ee_ativo }}
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</section>
+
+<section class="row" *ngIf="carregando">
+  <section class="preloader">
+    <section class="loader"></section>
+  </section>
+</section>

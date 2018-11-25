@@ -1,0 +1,98 @@
+<section class="container-fluid no-padding">
+  <section class="row no-gutters">
+    <section class="col">
+      <section class="page--breadcrumb">
+        <ul class="breadcrumbs breadcrumbs--list">
+          <li class="breadcrumbs__item">
+            <a [routerLink]="['/','produto','listar']" class="breadcrumbs__element">Produto</a>
+          </li>
+          <li class="breadcrumbs__item breadcrumbs__item_active">
+            <a [routerLink]="['/','produto','novo']" class="breadcrumbs__element">Novo</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </section>
+  <section class="row no-gutters">
+    <section class="col">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Cadastrar</h3>
+        </div>
+        <form id="pdg--form">
+          <div class="box-body">
+            <section class="row no-gutters">
+              <section class="col-md-12 col-sm-12">
+                <section class="form-group">
+                  <section class="row">
+                    <section class="col">
+                      <label for="nomeProduto" class="control-label label--input">Nome</label>
+                    </section>
+                    <section class="col">
+                      <label for="descricaoProduto" class="control-label label--input">Descrição</label>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col">
+                      <input type="text" id="nomeProduto" autocomplete="new-name" name="nomeProduto" [(ngModel)]="produto.no_produto" value="" required class="form-control input-lg pdg--input">
+                    </section>
+                    <section class="col">
+                      <input type="text" id="descricaoProduto" autocomplete="new-name" name="descricaoProduto" [(ngModel)]="produto.des_produto" value="" required class="form-control input-lg pdg--input">
+                    </section>
+                  </section>
+
+                  <section class="row">
+                    <section class="col-md-3">
+                      <label for="valorProduto"  class="control-label label--input">Valor do produto</label>
+                    </section>
+                    <section class="col-md-3">
+                      <label for="qtdProduto" class="control-label label--input">Quantidade em estoque</label>
+                    </section>
+                    <section class="col">
+                      <label for="categoriaProduto" class="control-label label--input">Categoria</label>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col-md-3">
+                      <input currencyMask id="valorProduto" type="number" name="valorProduto" [(ngModel)]="produto.valor_produto" value="" required class="form-control input-lg pdg--input">
+                    </section>
+                    <section class="col-md-3">
+                      <input type="number" id="qtdProduto" autocomplete="new-name" name="qtdProduto" [(ngModel)]="produto.qtd" value="" required class="form-control input-lg pdg--input">
+                    </section>
+                    <section class="col">
+                      <div class="wrap-input100 validate-input">
+                        <select id="categoriaProduto" class="form-control input-lg pdg--input" name="categoriaProduto" [(ngModel)]="produto.cod_categoria">
+                          <option *ngFor="let categoria of categorias" [ngValue]="categoria.cod_categoria"> {{ categoria.no_categoria }} </option>
+                        </select>
+                        <span class="focus-input100"></span>
+                      </div>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col">
+                      <label for="eeAtivo" class="control-label label--input">Ativo</label>
+                    </section>
+                  </section>
+                  <section class="col">
+                    <label class="container">
+                      <input type="checkbox" id="eeAtivo" autocomplete="new-name" name="categoriaProduto" [(ngModel)]="produto.ee_ativo" value="" required class="">
+                      <span class="checkmark"></span>
+                    </label>
+                  </section>
+                </section>
+                </section>
+              </section>
+          </div>
+          <div class="box-footer">
+            <button type="button" (click)='novoProduto()' class="btn--pdg btn--success">Salvar</button>
+            <button type="button" (click)='cancelar()' class="btn--pdg btn--danger">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </section>
+</section>
+
+<section class="preloader" *ngIf="carregando">
+  <section class="loader"></section>
+</section>

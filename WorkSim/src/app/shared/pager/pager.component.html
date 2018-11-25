@@ -1,0 +1,33 @@
+<p class="informacao" *ngIf="quantidadeRegistros > 1"> <b> Exibindo {{primeiroElemento}} a {{ultimoElemento}} de {{numberToReal(quantidadeRegistros)}} </b> </p>
+
+<div class="row info--page" *ngIf="quantidadeRegistros > pageSize && !somenteInformacao">
+  <nav class="mx-auto" aria-label="Navegação por página.">
+    <ul class="pagination">
+      <li class="page-item" [ngClass]="{disabled:page === 1}">
+        <a class="page-link" (click)="primeiraPagina()">
+          <i class="fa fa-backward" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:page === 1}">
+        <a class="page-link" (click)="paginaAnterior()">
+          <i class="fa fa-caret-left fa-lg" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li *ngFor="let pagina of paginas" class="page-item" [ngClass]="{active:page === pagina}">
+        <a class="page-link" (click)="alterarPaginaCorrente(pagina)">
+          {{pagina}}
+        </a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:page === pageTotal}">
+        <a class="page-link" (click)="proximaPagina()">
+          <i class="fa fa-caret-right fa-lg" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:page === pageTotal}">
+        <a class="page-link" (click)="ultimaPagina()">
+          <i class="fa fa-forward" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

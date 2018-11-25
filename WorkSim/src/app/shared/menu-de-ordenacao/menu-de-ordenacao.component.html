@@ -1,0 +1,55 @@
+<section class="menu--dropdowns">
+  <section class="dropdown--pauta">
+    <a [ngx-scroll-to]="'ordenacaoDrop'" class="button--menu button--def button--drop dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-sort" aria-hidden="true"></i>
+      <span class="small--screen"> ORD </span>
+      <span class="large--screen"> Ordenar </span>
+    </a>
+    <section class="dropdown-menu">
+      <h6 class="dropdown-header">Ordernar Por</h6>
+      <a class="dropdown-item" href="javascript:void(0);" *ngFor="let campo of listaDeCamposDisponiveis" (click)="incluirCampoNaOrdenacao(campo,'asc')" [ngClass]="{'ocultar-campo':ocultarCampo(campo)}">
+        {{campo.descricao}}
+      </a>
+      <section class="dropdown-divider"></section>
+      <a class="dropdown-item" href="javascript:void(0);" (click)="limparOrdenacao()">
+        Remover Todos
+        <i class="fa fa-times fa-fw text-danger" aria-hidden="true"></i>
+      </a>
+    </section>
+  </section>
+</section>
+
+<section class="filter--selected">
+  <section class="dropdown--filter" *ngFor="let campoOrdenado of ordernarPor">
+    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span [ngSwitch]="campoOrdenado.direcaoDaOrdenacao">
+        <i class="fa fa-sort-numeric-desc text-danger" aria-hidden="true" *ngSwitchCase="'desc'"></i>
+        <i class="fa fa-sort-numeric-asc text-warning" aria-hidden="true" *ngSwitchCase="'asc'"></i>
+        {{ campoOrdenado.descricao }}
+      </span>
+    </a>
+    <section class="dropdown-menu">
+      <h6 class="dropdown-header">Ordenar</h6>
+      <a class="dropdown-item" href="javascript:void(0);" (click)="incluirCampoNaOrdenacao(campoOrdenado, 'asc')">
+        <i class="fa fa-sort-numeric-asc text-warning" aria-hidden="true"></i>
+        Ascendente
+      </a>
+      <a class="dropdown-item" href="javascript:void(0);" (click)="incluirCampoNaOrdenacao(campoOrdenado,'desc')">
+        <i class="fa fa-sort-numeric-desc text-danger" aria-hidden="true"></i>
+        Descendente
+      </a>
+      <section class="dropdown-divider"></section>
+      <a class="dropdown-item" href="javascript:void(0);" (click)="limparCampo(campoOrdenado)">
+        <i class="fa fa-times text-danger" aria-hidden="true"></i>
+        Remover campo
+      </a>
+    </section>
+  </section>
+</section>
+
+
+
+
+
+
+

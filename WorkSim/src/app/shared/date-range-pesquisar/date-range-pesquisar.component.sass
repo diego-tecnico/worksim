@@ -1,0 +1,53 @@
+@import "~assets/css/sass/variables"
+@import "~assets/css/sass/mixins"
+
+.system--date
+  height: 45px
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15)
+  margin-bottom: 5px
+  transition: .2s ease-out
+  .label--data,
+  .label--data--silver
+    cursor: pointer
+    color: $greyNoRegistry
+    transition: 0.2s ease-out
+
+  .label--data
+    background: white
+    border: white 1px solid
+    border-radius: 0
+    font-size: 0.7rem
+    &:hover
+      background: #fdfdfd
+      border: 1px solid #fdfdfd
+
+  .label--data--silver
+    background: $greyNoRegistry
+    border: $greyNoRegistry 1px solid
+    border-radius: 0
+    &:hover
+      background: $mediumDarkGrey
+      border: 1px solid $mediumDarkGrey
+
+  .input--data,
+  .input--data--silver
+    cursor: pointer
+    float: right
+    font-family: $family
+    color: $greyNoRegistry
+    font-size: 0.8rem
+    font-weight: 700
+    text-align: center
+    &:focus
+      box-shadow: none
+      outline: none
+
+
+  .input--data
+    color: $greyNoRegistry !important
+    border: 1px solid white
+    background: white
+
+  .input--data--silver
+    color: $greyNoRegistry
+    background: #fff

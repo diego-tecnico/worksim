@@ -1,0 +1,182 @@
+<section class="container-fluid no-padding">
+  <section class="row no-gutters">
+    <section class="col">
+      <section class="page--breadcrumb">
+        <ul class="breadcrumbs breadcrumbs--list">
+          <li class="breadcrumbs__item">
+            <a [routerLink]="['/','usuarios','listar']" class="breadcrumbs__element">Usuários</a>
+          </li>
+          <li class="breadcrumbs__item breadcrumbs__item_active">
+            <a [routerLink]="['/','usuarios','novo']" class="breadcrumbs__element">Novo</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </section>
+  <section class="row no-gutters">
+    <section class="col">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Novo Usuário</h3>
+        </div>
+        <form (ngSubmit)="onSubmit()" id="pdg--form">
+          <div class="box-body">
+            <section class="row no-gutters">
+              <section class="col centralizar">
+                <label class="usuario--foto add--photo" for="imgUser">
+                  <img id="img" [(src)]="dadosDoUsuario.caminhoFoto" onError="this.src='../../../assets/img/face1.jpg'" alt="Foto do Usuário">
+                  <input type="file" id="imgUser" accept="image/*" (change)="imagemSelecionada($event)" name="image" class="fileupload">
+                </label>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <section class="row">
+                    <section class="col">
+                      <label for="nomeUsuario" class="control-label label--input">Nome</label>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col">
+                      <input type="text" id="nomeUsuario" autocomplete="new-name"  [(ngModel)]="dadosDoUsuario.nome" name="nomeUsuario" [pdgHighlight]="'nomeUsuario'" required class="form-control input-lg pdg--input">
+                    </section>
+                  </section>
+                </section>
+              </section>
+              <section class="col-md-6 col-sm-12">
+                <section class="form-group">
+                  <section class="row">
+                    <section class="col">
+                      <label for="sobrenome" class="control-label label--input">Sobrenome</label>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col">
+                      <input type="text" id="sobrenome" [(ngModel)]="dadosDoUsuario.sobrenome" name="sobrenome" [pdgHighlight]="'sobrenome'" required class="form-control input-lg pdg--input">
+                    </section>
+                  </section>
+                </section>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col">
+                <section class="form-group">
+                  <section class="row">
+                    <section class="col">
+                      <label for="email" class="control-label label--input">Email</label>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col">
+                      <input type="email" id="email" name="email" [(ngModel)]="dadosDoUsuario.email" [pdgHighlight]="'email'"
+                             required class="form-control input-lg pdg--input">
+                    </section>
+                  </section>
+                </section>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <section class="row">
+                    <section class="col">
+                      <label for="loginUsuario" class="control-label label--input">Login</label>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col">
+                      <input type="text" id="loginUsuario" [(ngModel)]="dadosDoUsuario.login" name="loginUsuario" [pdgHighlight]="'loginUsuario'"
+                             required class="form-control input-lg pdg--input">
+                    </section>
+                  </section>
+                </section>
+              </section>
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <section class="row">
+                    <section class="col">
+                      <label for="senhaUsuario" class="control-label label--input">Senha</label>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col">
+                      <input type="password" id="senhaUsuario" autocomplete="new-password" [(ngModel)]="dadosDoUsuario.senha" name="senhaUsuario" [pdgHighlight]="'senhaUsuario'"
+                             required class="form-control input-lg pdg--input">
+                    </section>
+                  </section>
+                </section>
+              </section>
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <section class="row">
+                    <section class="col">
+                      <label for="cnpjOuCpf" class="control-label label--input">CPF</label>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col">
+                      <input type="text" [(ngModel)]="dadosDoUsuario.cpf" id="cnpjOuCpf" name="cnpjOuCpf" [pdgHighlight]="'cnpjOuCpf'"
+                             [textMask]="{mask: maskCPF}" required class="form-control input-lg pdg--input">
+                    </section>
+                  </section>
+                </section>
+              </section>
+            </section>
+            <section class="row no-gutters">
+              <section class="col-md-4 col-sm-12">
+                <section class="form-group">
+                  <section class="row">
+                    <section class="col">
+                      <label for="telefone" class="control-label label--input">Tel. Celular</label>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col">
+                      <input type="text" id="telefone" [(ngModel)]="dadosDoUsuario.telefone" name="telefone" [pdgHighlight]="'telefone'"
+                             [textMask]="{mask: maskTelefone}" required class="form-control input-lg pdg--input">
+                    </section>
+                  </section>
+                </section>
+              </section>
+            </section>
+            <!--<section class="row no-gutters">
+              <section class="col-lg-4 col-md-6 col-sm-12">
+                <section class="form-group">
+                  <section class="row">
+                    <section class="col">
+                      <label class="control-label label--input">Administrador da conta</label>
+                    </section>
+                  </section>
+                  <section class="row">
+                    <section class="col">
+                      <div class="radio-group">
+                        <input type="radio" id="opt_1" (change)="ehAdministrador()" class="radio-group__option" value="sim" name="isDefault_group">
+                        <label class="radio-group__label" for="opt_1">
+                          SIM
+                        </label>
+                        <input type="radio" id="opt_2" (change)="ehAdministrador()" class="radio-group__option" value="nao" name="isDefault_group">
+                        <label class="radio-group__label" for="opt_2">
+                          NÃO
+                        </label>
+                      </div>
+                    </section>
+                  </section>
+                </section>
+              </section>
+            </section>-->
+          </div>
+          <div class="box-footer">
+            <button type="submit" class="btn--pdg btn--success">Salvar</button>
+            <button type="button" (click)='cancelar()' class="btn--pdg btn--danger">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </section>
+</section>
+
+
+<section class="preloader" *ngIf="carregando">
+  <section class="loader"></section>
+</section>

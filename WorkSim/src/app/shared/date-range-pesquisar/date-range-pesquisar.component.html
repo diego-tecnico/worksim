@@ -1,0 +1,13 @@
+<section class="input-group system--date">
+  <section class="input-group-prepend">
+    <button class="btn btn-outline-secondary label--data" type="button" (click)="periodoAnterior()">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </button>
+  </section>
+  <input id="data" class="form-control input--data" name="data" type="text" placeholder="Escolha uma Data" readonly ngModel>
+  <section class="input-group-append">
+    <button class="btn btn-outline-secondary label--data" type="button" (click)="proximoPeriodo()">
+      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </button>
+  </section>
+</section>

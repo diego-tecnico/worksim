@@ -1,0 +1,49 @@
+<section class="container-fluid no-padding">
+  <section class="row no-gutters">
+    <section class="col">
+      <section class="page--breadcrumb">
+        <ul class="breadcrumbs breadcrumbs--list">
+          <li class="breadcrumbs__item breadcrumbs__item_active">
+            <a [routerLink]="['/','fornecedor','listar']" class="breadcrumbs__element">Fornecedores</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </section>
+  <section class="row no-gutters">
+    <section class="col">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de Usuários</h3>
+          <!-- <span class="badge badge--pdg--primary">{{ quantidadeUsuarios }}</span> -->
+          <div class="box-tools pull-right">
+            <a [routerLink]="['/', 'fornecedor', 'novo']" class="btn--pdg btn--primary">
+              <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+              <span class="large--screen">Novo Fornecedor</span>
+            </a>
+          </div>
+        </div>
+        <div class="box-body scroll--small">
+          <div class="table--scroll--responsive">
+            <div class="row header">
+              <div class="cell col text-truncate">
+                Nome
+              </div>
+              <div class="cell col text-truncate">
+                Status
+              </div>
+              <div class="cell col-md-1 text-truncate">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</section>
+
+<section class="row" *ngIf="carregando">
+  <section class="preloader">
+    <section class="loader"></section>
+  </section>
+</section>

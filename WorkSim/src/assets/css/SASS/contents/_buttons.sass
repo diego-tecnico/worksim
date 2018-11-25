@@ -1,0 +1,234 @@
+.btn--pdg
+  font-size: 0.6rem
+  font-family: $family
+  font-weight: 600
+  letter-spacing: 2px
+  text-transform: uppercase
+  padding: 7px 15px
+  border: none
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15)
+  cursor: pointer
+  transition: all 0.25s ease-in-out
+  &:hover
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15)
+  &:active
+    box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.25)
+  // DEFAULT
+  &.btn--default
+    background: $greyNoRegistry
+    color: white !important
+    &:hover
+      background: $mediumGrey
+    &:active
+      background: $mediumDarkGrey
+  // PRIMARY
+  &.btn--primary
+    background: $blueSystem
+    color: white !important
+    &:hover
+      background: $darkBlueBtn
+    &:active
+      background: $darkerBlue
+  // PRIMARY
+  &.btn--classificado
+    background: $classificacao
+    color: white !important
+    &:hover
+      background: $clasMiddle
+    &:active
+      background: $clasDark
+  // SUCCESS
+  &.btn--success
+    background: $greenLoader
+    color: white !important
+    &:hover
+      background: $darkGreen
+    &:active
+      background: $darkerGreen
+  // DANGER
+  &.btn--danger
+    background: $darkRedBtn
+    color: white !important
+    &:hover
+      background: $darkerRed
+    &:active
+      background: $evenDarkerRed
+  // CONFIG
+  &.flt-l
+    float: left
+    margin-right: 5px
+  &.flt-r
+    float: right
+    margin-left: 5px
+  @media screen and (max-width: 767px)
+    width: 100%
+    margin-bottom: 5px
+    text-align: center
+
+
+.btn--success--pdg
+  color: #fff
+  background-color: $greenLoader
+  border-color: $greenLoader
+
+.btn--danger--pdg
+  color: #fff
+  background-color: $darkRedBtn
+  border-color: $darkRedBtn
+
+.btn--primary--pdg
+  color: #fff
+  background-color: $blueSystem
+  border-color: $blueSystem
+
+.btn--warning--pdg
+  color: $darkGrey
+  background-color: $yellowWarning
+  border-color: $yellowWarning
+
+.button--menu
+  min-width: 10px
+  max-width: 250px
+  display: inline-block
+  cursor: pointer
+  margin: 0.3em
+  padding: 0.5rem 0.9rem
+  border: 1px solid $blueSystem
+  background: $blueSystem
+  color: white !important
+  font-family: $family
+  font-size: 0.7rem
+  letter-spacing: 2px
+  text-transform: uppercase
+  vertical-align: middle
+  position: relative
+  z-index: 1
+  -webkit-backface-visibility: hidden
+  -moz-osx-font-smoothing: grayscale
+  overflow: hidden
+  transition: color 0.3s
+  &:first-child
+    margin-left: 0
+  &:focus,
+  &:hover
+    outline: none
+    color: #fff
+    &::before,
+    &::after
+    	transform: translate3d(0, 100%, 0)
+    &::after
+      transition-delay: 0.175s
+  &::before,
+  &::after
+    content: ''
+    position: absolute
+    height: 100%
+    margin: 0
+    border: none
+    width: 100%
+    bottom: 100%
+    left: 0
+    z-index: -1
+    transition: transform 0.3s
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1)
+
+.button--active
+  color: white !important
+  cursor: default
+  &:hover
+    &::before,
+    &::after
+      -webkit-transform: none
+      transform: none
+
+.button--drop
+  max-width: 270px
+
+.button--def
+  +buttonsColor($blueSystem, $lightBlueBtn)
+
+.button--fav
+  +buttonsColor($darkYellowBtn, $lightYellowBtn)
+
+.button--dow
+  +buttonsColor($darkRedBtn, $lightRedBtn)
+
+.button--light
+  background: white
+  border: 1px solid $lightGrey
+  &.button--active
+  	background: white !important
+  	border-color: $lightGrey
+  &:hover
+    border-color: $lightGrey !important
+  &::before
+    background: $lightGrey !important
+  &::after
+    background: white !important
+
+
+.small--screen
+  display: inline-block
+  @media (min-width: 992px)
+    display: none
+
+.large--screen
+  display: none
+  @media (min-width: 992px)
+    display: inline-block
+
+.radio-group
+  margin-top: 0
+  width: 250px
+  display: table
+  table-layout: fixed
+  border-spacing: 0
+  border-collapse: separate
+  @media screen and (max-width: 767px)
+    width: 100%
+
+.radio-group__option
+  display: none
+  &:checked
+    + label
+      color: $blueSystem
+
+.radio-group__label
+  display: table-cell
+  height: 28px
+  padding: 5px
+  vertical-align: middle
+  text-align: center
+  position: relative
+  border: 1px solid $greyNoRegistry
+  border-style: solid none solid solid
+  border-radius: 5px 0 0 5px
+  color: $greyNoRegistry
+  -moz-transition: border 250ms, color 250ms
+  -o-transition: border 250ms, color 250ms
+  -webkit-transition: border 250ms, color 250ms
+  transition: border 250ms, color 250ms
+  cursor: pointer
+  + input
+    &:checked
+      + .radio-group__label
+        &::before
+          border-radius: 0 5px 5px 0
+          transform: translate3d(-4px, 0, 0)
+    + .radio-group__label
+      border-radius: 0 5px 5px 0
+      border-style: solid solid solid none
+      &::before
+        display: block
+        position: absolute
+        top: 0
+        width: 100%
+        height: calc(100% + 2px)
+        margin-top: -1px
+        border: 1px solid $blueSystem
+        background: $blueSystem
+        border-radius: 5px 0 0 5px
+        transform: translate3d(-105%, 0, 0)
+        transition: all 250ms
+        color: white
+        line-height: 32px

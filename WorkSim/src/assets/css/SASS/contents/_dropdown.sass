@@ -1,0 +1,16 @@
+.drop--layout
+  width: 100%
+  text-align: left
+  > i
+    margin-top: 3.5px
+    float: right
+  @media screen and (max-width: 768px)
+    margin-bottom: 10px
+  + .dropdown-menu
+    > h6
+      font-size: 0.7rem
+    > a
+      text-transform: none !important
+      font-size: 0.8rem
+      &:active
+        background-color: $lightGrey

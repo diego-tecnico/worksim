@@ -1,0 +1,11 @@
+
+
+<section class="input-group">
+  <input type="text" id="cep" [(ngModel)]="cep" name="cep" [textMask]="{mask: maskCEP}" [pdgHighlight]="'cep'" required class="form-control input-lg pdg--input">
+  <section class="input-group-append">
+    <button class="btn btn-default btn-sm append--button" type="button" (blur)="buscarEnderecoPorCep()"  (change)="buscarEnderecoPorCep()" (click)="buscarEnderecoPorCep()">
+        <i class="fa fa-fw fa-spin fa-refresh fa-spinner text-success" [ngClass]="{ 'd-none': !pesquisarPorCep  }"></i>
+        <i class="fa fa-search" [ngClass]="{ 'd-none': pesquisarPorCep }"></i>
+    </button>
+  </section>
+</section>

@@ -1,0 +1,9 @@
+.radio-group__label
+  + input
+    &:checked
+      + .radio-group__label
+        &::before
+          content: "NÃO"
+    + .radio-group__label
+      &::before
+        content: "SIM"
