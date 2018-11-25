@@ -143,16 +143,16 @@ namespace WorkSim.Controllers
 
                 #region RN
                 if (string.IsNullOrEmpty(usuario.Login))
-                    return BadRequest("Campo Login e obrigatorio");
+                    return BadRequest("Campo Login e obrigatorio !");
 
                 if (string.IsNullOrEmpty(usuario.Nome))
-                    return BadRequest("Campo Nome e obrigatorio");
+                    return BadRequest("Campo Nome e obrigatorio !");
 
                 if (string.IsNullOrEmpty(usuario.Perfil))
-                    return BadRequest("Campo Perfil e obrigatorio");
+                    return BadRequest("Campo Perfil e obrigatorio !");
 
                 if (usuario.SetorId == 0)
-                    return BadRequest("Campo Setor e obrigatorio");
+                    return BadRequest("Campo Setor e obrigatorio !");
                 #endregion
 
                 var dadosDoUsuario = _db.Usuario.FirstOrDefault(x => x.Id == Id);
