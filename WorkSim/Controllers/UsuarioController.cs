@@ -66,7 +66,7 @@ namespace WorkSim.Controllers
         public object Obter([FromRoute] int Id)
         {
             try
-            {
+            { 
 
                 var usuario = _db.Usuario
                                   .Include(x => x.Setor)
