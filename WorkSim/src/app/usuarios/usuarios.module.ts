@@ -10,9 +10,6 @@ import { UsuarioConfiguracaoComponent } from './usuario-configuracao/usuario-con
 import { UsuarioPainelComponent } from './usuario-perfil/usuario-perfil.component';
 import { UsuarioSenhaComponent } from './usuario-senha/usuario-senha.component';
 import { FormsModule } from '@angular/forms';
-import { UsuarioFinalizarCadastroComponent } from './usuario-finalizar-cadastro/usuario-finalizar-cadastro.component';
-import { GruposService } from '../grupos/grupos.service';
-import { EmpresasService } from '../empresas/empresas.service';
 import { UsuarioListarComponent } from './usuario-listar/usuario-listar.component';
 import { UsuarioNovoComponent } from './usuario-novo/usuario-novo.component';
 import { UsuariosEditarComponent } from './usuarios-editar/usuarios-editar.component';
@@ -28,13 +25,12 @@ import { UsuariosEditarComponent } from './usuarios-editar/usuarios-editar.compo
     UsuarioConfiguracaoComponent,
     UsuarioPainelComponent,
     UsuarioSenhaComponent,
-    UsuarioFinalizarCadastroComponent,
     UsuarioListarComponent,
     UsuarioNovoComponent,
     UsuariosEditarComponent
     
   ],
-  providers: [UsuariosService, GruposService, EmpresasService]
+  providers: [UsuariosService]
 
 })
 export class UsuariosModule { }

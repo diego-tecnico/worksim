@@ -31,11 +31,7 @@ import {MalihuScrollbarModule} from 'ngx-malihu-scrollbar';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './shared/toke.interceptor';
 import {UsuariosModule} from './usuarios/usuarios.module';
-import {UsuarioNovoComponent} from './usuarios/usuario-novo/usuario-novo.component';
-import {UsuarioListarComponent} from './usuarios/usuario-listar/usuario-listar.component';
-import {PlanosModule} from './planos/planos.module';
 import {FixSizeService} from './fix-size.service';
-import { GruposListarComponent } from './grupos/grupos-listar/grupos-listar.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from "ng2-currency-mask/src/currency-mask.config";
@@ -62,8 +58,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     StarterControlSidebarComponent,
     AuthLayoutComponent,
     BreadcrumbsComponent,
-    TitleComponent,
-    GruposListarComponent,
+    TitleComponent
   ],
   imports: [
     ChartModule,
@@ -82,7 +77,6 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     Ng2AutoCompleteModule,
     HttpClientModule,
     FormsModule,
-    PlanosModule,
     CurrencyMaskModule
   ],
   exports: [AngularMultiSelectModule, HttpClientModule],

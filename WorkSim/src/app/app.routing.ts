@@ -12,11 +12,11 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'cross',
+        redirectTo: 'worksim',
         pathMatch: 'full'
       },
       {
-        path: 'cross',
+        path: 'worksim',
         loadChildren: './dashboard/dashboard.module#DashboardModule',
         data: {
           breadcrumb: 'Dashboards'
@@ -30,45 +30,10 @@ export const AppRoutes: Routes = [
         }
       },
       {
-        path: 'planos',
-        loadChildren: './planos/planos.module#PlanosModule',
+        path: 'chamados',
+        loadChildren: './chamados/chamados.module#ChamadosModule',
         data: {
-          breadcrumb: 'Planos'
-        }
-      },
-      {
-        path: 'treino',
-        loadChildren: './treino/treino.module#TreinoModule',
-        data: {
-          breadcrumb: 'Treinos'
-        }
-      },
-      {
-        path: 'alunos',
-        loadChildren: './alunos/alunos.module#AlunosModule',
-        data: {
-          breadcrumb: 'Alunos'
-        }
-      },
-      {
-        path: 'fornecedor',
-        loadChildren: './fornecedor/fornecedor.module#FornecedorModule',
-        data: {
-          breadcrumb: 'Fornecedor'
-        }
-      },
-      {
-        path: 'financeiro',
-        loadChildren: './financeiro/financeiro.module#FinanceiroModule',
-        data: {
-          breadcrumb: 'Fornecedor'
-        }
-      },
-      {
-        path: 'profissional',
-        loadChildren: './profissional/profissional.module#ProfissionalModule',
-        data: {
-          breadcrumb: 'Profissional'
+          breadcrumb: 'Chamados'
         }
       }
     ]

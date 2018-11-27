@@ -1,0 +1,129 @@
+<section class="container-fluid no-padding">
+  <section class="row no-gutters">
+    <section class="col">
+      <section class="page--breadcrumb">
+        <ul class="breadcrumbs breadcrumbs--list">
+          <li class="breadcrumbs__item breadcrumbs__item_active">
+            <a [routerLink]="['/','chamados','listar']" class="breadcrumbs__element">Chamados</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </section>
+  <section class="row no-gutters">
+    <section class="col">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Pesquisar Chamados </h3>
+          <span class="badge badge--pdg--primary"></span>
+          <div class="box-tools pull-right">
+            <a [routerLink]="['/', 'chamados', 'novo']" class="btn--pdg btn--primary">
+              <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+              <span class="large--screen">Novo Chamado</span>
+            </a>
+          </div>
+        </div>
+
+        <section class="row no-gutters">
+          <section class="col-md-3 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="protocolo">Nº Protocolo</label>
+              <div class="wrap-input100 validate-input">
+                <input id="protocolo" class="form-control input-lg pdg--input" type="text" autofocus name="protocolo">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+          <section class="col-md-3 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="cpfCnpj">CPF - CNPJ</label>
+              <div class="wrap-input100 validate-input">
+                <input id="cpfCnpj" class="form-control input-lg pdg--input" type="text" autofocus name="cpfCnpj">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+          <section class="col-md-3 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="categoria">Categoria</label>
+              <div class="wrap-input100 validate-input">
+                <input id="categoria" class="form-control input-lg pdg--input" type="text" autofocus name="categoria">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+          <section class="col-md-3 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="responsavel">Responsável</label>
+              <div class="wrap-input100 validate-input">
+                <input id="responsavel" class="form-control input-lg pdg--input" type="text" autofocus name="responsavel">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+        </section>
+        <section class="row no-gutters">
+          <section class="col-md-3 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="origem">Origem</label>
+              <div class="wrap-input100 validate-input">
+                <input id="origem" class="form-control input-lg pdg--input" type="text" autofocus name="origem">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+          <section class="col-md-3 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="origem">Origem</label>
+              <div class="wrap-input100 validate-input">
+                <input id="origem" class="form-control input-lg pdg--input" type="text" autofocus name="origem">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+        </section>
+
+      <!--
+          <div class="input-field col s3 m2">
+            <select id="setor" name="setor">
+              <option value="" disabled selected>Setor</option>
+            </select>
+          </div>
+          <div class="input-field col s3 m2">
+            <select id="categoria" name="categoria" (change)="obterSubCategorias(categoria.id)">
+              <option value="" disabled selected>Categoria</option>
+            </select>
+          </div>
+          <div class="input-field col s3 m2">
+            <select id="origem" name="origem">
+            </select>
+          </div>
+          <div>
+            <div class="input-field col s3 m3">
+              <select id="tipo" name="tipo">
+                <option value="" disabled selected>Responsável</option>
+              </select>
+            </div>
+          </div>
+        </div>-->
+      </div>
+    </section>
+  </section>
+</section>
+<section class="row no-gutters">
+  <section class="col">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Quantidade de chamados </h3>
+        <span class="badge badge--pdg--primary">{{ quantidadeDeChamados }}</span>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+<section class="row" *ngIf="carregando">
+  <section class="preloader">
+    <section class="loader"></section>
+  </section>
+</section>
