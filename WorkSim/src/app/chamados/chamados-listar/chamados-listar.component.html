@@ -25,7 +25,7 @@
         </div>
 
         <section class="row no-gutters">
-          <section class="col-md-3 col-sm-2">
+          <section class="col-md-2 col-sm-2">
             <section class="form-group">
               <label class="label-input100" for="protocolo">Nº Protocolo</label>
               <div class="wrap-input100 validate-input">
@@ -34,78 +34,125 @@
               </div>
             </section>
           </section>
-          <section class="col-md-3 col-sm-2">
+          <section class="col-md-2 col-sm-2">
             <section class="form-group">
-              <label class="label-input100" for="cpfCnpj">CPF - CNPJ</label>
+              <label class="label-input100" for="cpfCnpj">CPF <i>ou</i> CNPJ</label>
               <div class="wrap-input100 validate-input">
                 <input id="cpfCnpj" class="form-control input-lg pdg--input" type="text" autofocus name="cpfCnpj">
                 <span class="focus-input100"></span>
               </div>
             </section>
           </section>
-          <section class="col-md-3 col-sm-2">
+          <section class="col-md-2 col-sm-2">
             <section class="form-group">
-              <label class="label-input100" for="categoria">Categoria</label>
+              <label class="label-input100" for="origem">Setor</label>
               <div class="wrap-input100 validate-input">
-                <input id="categoria" class="form-control input-lg pdg--input" type="text" autofocus name="categoria">
+                <!--[(ngModel)]="chamado.destinoId"-->
+                <select id="origem" class="form-control input-lg pdg--input" name="origem">
+                  <option *ngFor="let setor of setores" [value]="setor.id"> {{ setor.no_setor }} </option>
+                </select>
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+          <section class="col-md-2 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="responsavel">Categoria</label>
+              <div class="wrap-input100 validate-input">
+                <!--[(ngModel)]="chamado.destinoId"-->
+                <select id="responsavel" class="form-control input-lg pdg--input" name="responsavel">
+                  <option *ngFor="let categoria of categorias" [value]="categoria.id"> {{ categoria.no_categoria_setor }} </option>
+                </select>
                 <span class="focus-input100"></span>
               </div>
             </section>
           </section>
           <section class="col-md-3 col-sm-2">
             <section class="form-group">
-              <label class="label-input100" for="responsavel">Responsável</label>
+              <label class="label-input100" for="destino">Destino</label>
               <div class="wrap-input100 validate-input">
-                <input id="responsavel" class="form-control input-lg pdg--input" type="text" autofocus name="responsavel">
+                <!--[(ngModel)]="chamado.destinoId"-->
+                <select id="destino" class="form-control input-lg pdg--input" name="destino">
+                  <option *ngFor="let setor of setores" [value]="setor.id"> {{ setor.no_setor }} </option>
+                </select>
                 <span class="focus-input100"></span>
               </div>
             </section>
           </section>
+
         </section>
         <section class="row no-gutters">
           <section class="col-md-3 col-sm-2">
             <section class="form-group">
-              <label class="label-input100" for="origem">Origem</label>
+              <label class="label-input100" for="responsavel">Responsável</label>
               <div class="wrap-input100 validate-input">
-                <input id="origem" class="form-control input-lg pdg--input" type="text" autofocus name="origem">
+                <!--[(ngModel)]="chamado.destinoId"-->
+                <select id="responsavel" class="form-control input-lg pdg--input" name="responsavel">
+                  <option *ngFor="let usuario of usuarios" [value]="usuario.id"> {{ usuario.nome }} </option>
+                </select>
                 <span class="focus-input100"></span>
               </div>
             </section>
           </section>
-          <section class="col-md-3 col-sm-2">
+          <section class="col-md-1 col-sm-2">
             <section class="form-group">
-              <label class="label-input100" for="origem">Origem</label>
+              <label class="label-input100" for="todos">Todos</label>
               <div class="wrap-input100 validate-input">
-                <input id="origem" class="form-control input-lg pdg--input" type="text" autofocus name="origem">
+                <input type="checkbox" id="todos" [checked]="tiposDeChk[0].value" (change)="chkTodos($event.target)" autocomplete="new-name" name="todos" value="" required class="">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+          <section class="col-md-1 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="aberto">Aberto</label>
+              <div class="wrap-input100 validate-input">
+                <input type="checkbox" id="aberto" [checked]="tiposDeChk[1].value" (change)="chkFiltros($event.target, tiposDeChk[1])" autocomplete="new-name" name="aberto" value="" required class="">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+          <section class="col-md-1 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="reaberto">Reaberto</label>
+              <div class="wrap-input100 validate-input">
+                <input type="checkbox" id="reaberto" [checked]="this.tiposDeChk[2].value" (change)="chkFiltros($event.target, tiposDeChk[2])" autocomplete="new-name" name="reaberto" value="" required class="">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+          <section class="col-md-1 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="devolvido">Devolvido</label>
+              <div class="wrap-input100 validate-input">
+                <input type="checkbox" id="devolvido" [checked]="this.tiposDeChk[3].value" (change)="chkFiltros($event.target, tiposDeChk[3])" autocomplete="new-name" name="devolvido" value="" required class="">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+          <section class="col-md-1 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="finalizado">Finalizado</label>
+              <div class="wrap-input100 validate-input">
+                <input type="checkbox" id="finalizado" [checked]="this.tiposDeChk[4].value" (change)="chkFiltros($event.target, tiposDeChk[4])" autocomplete="new-name" name="finalizado" value="" required class="">
+                <span class="focus-input100"></span>
+              </div>
+            </section>
+          </section>
+          <section class="col-md-1 col-sm-2">
+            <section class="form-group">
+              <label class="label-input100" for="ematendimento">Em Atendimento</label>
+              <div class="wrap-input100 validate-input">
+                <input type="checkbox" id="ematendimento" [checked]="this.tiposDeChk[5].value" (change)="chkFiltros($event.target, tiposDeChk[5])" autocomplete="new-name" name="ematendimento" value="" required class="">
                 <span class="focus-input100"></span>
               </div>
             </section>
           </section>
         </section>
-
-      <!--
-          <div class="input-field col s3 m2">
-            <select id="setor" name="setor">
-              <option value="" disabled selected>Setor</option>
-            </select>
-          </div>
-          <div class="input-field col s3 m2">
-            <select id="categoria" name="categoria" (change)="obterSubCategorias(categoria.id)">
-              <option value="" disabled selected>Categoria</option>
-            </select>
-          </div>
-          <div class="input-field col s3 m2">
-            <select id="origem" name="origem">
-            </select>
-          </div>
-          <div>
-            <div class="input-field col s3 m3">
-              <select id="tipo" name="tipo">
-                <option value="" disabled selected>Responsável</option>
-              </select>
-            </div>
-          </div>
-        </div>-->
+        <div class="box-footer">
+          <button type="button" (click)="PesquisarChamado()" class="btn--pdg btn--primary">Pesquisar</button>
+          <button type="button" class="btn--pdg btn--danger">Limpar</button>
+        </div>
       </div>
     </section>
   </section>
@@ -113,14 +160,88 @@
 <section class="row no-gutters">
   <section class="col">
     <div class="box box-primary">
+      <!--<div class="box-header with-border" *ngIf="quantidadeDeChamados == 0">
+        <h3 class="box-title">Nenhum chamado encontrado com base aos filtros selecionados !</h3>
+      </div>-->
+      <!--<div class="box-header with-border" *ngIf="quantidadeDeChamados > 0">-->
       <div class="box-header with-border">
-        <h3 class="box-title">Quantidade de chamados </h3>
+        <h3 class="box-title">Chamados encontrados</h3>
         <span class="badge badge--pdg--primary">{{ quantidadeDeChamados }}</span>
+      </div>
+      <div class="box-body scroll--small">
+        <div class="table--scroll--responsive">
+          <div class="row header">
+            <div class="cell col-md-1 col-sm-1 text-truncate">
+              SLA
+            </div>
+            <div class="cell col text-truncate">
+              Data
+            </div>
+            <div class="cell col text-truncate">
+              Protocolo
+            </div>
+            <div class="cell col text-truncate">
+              Nome
+            </div>
+            <div class="cell col text-truncate">
+              CPF <i>ou</i> CNPJ
+            </div>
+            <div class="cell col text-truncate">
+              Assunto
+            </div>
+            <div class="cell col text-truncate">
+              Setor
+            </div>
+            <div class="cell col text-truncate">
+              Categoria
+            </div>
+            <div class="cell col text-truncate">
+              Prioridade
+            </div>
+            <div class="cell col text-truncate">
+              Status
+            </div>
+          </div>
+          <div class="row" [mdl-tooltip]="ttpVisualizarChamado" mdl-tooltip-position="left" *ngFor="let usuario of usuarios">
+            <div class="cell col-md-1 col-sm-1 wrap--text" data-title="sla">
+              P
+            </div>
+            <div class="cell col wrap--text" data-title="data">
+              23/10/2018
+            </div>
+            <div class="cell col wrap--text" data-title="Cpf ou cnpj">
+              #320032019112911
+            </div>
+            <div class="cell col wrap--text" data-title="Cpf ou cnpj">
+              Jose A. Santos
+            </div>
+            <div class="cell col wrap--text" data-title="assunto">
+              000.111.555-11
+            </div>
+            <div class="cell col wrap--text" data-title="prioridade">
+              Mouse parou
+            </div>
+            <div class="cell col wrap--text" data-title="prioridade">
+              CallCenter
+            </div>
+            <div class="cell col wrap--text" data-title="prioridade">
+              Manutenção
+            </div>
+            <div class="cell col wrap--text" data-title="prioridade">
+              Alta
+            </div>
+            <div class="cell col wrap--text" data-title="prioridade">
+              Aberto
+            </div>
+            <mdl-tooltip #ttpVisualizarChamado="mdlTooltip">
+              Clique para visualizar o Chamado
+            </mdl-tooltip>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </section>
-
 
 <section class="row" *ngIf="carregando">
   <section class="preloader">

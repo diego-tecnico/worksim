@@ -22,7 +22,7 @@ namespace WorkSim.Controllers
 
     [HttpGet]
     public object ObterSetores()
-    {
+     {
       try
       {
         var setores = _db.Setor

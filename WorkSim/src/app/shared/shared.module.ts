@@ -40,6 +40,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { HighlightDirective } from './hightlight/highlight.directive';
 import { BloquearDesbloquearComponent } from './bloquear-desbloquear/bloquear-desbloquear.component';
 import { SetorService } from '../setor/setor.service';
+import { CategoriaService } from '../categoria/categoria.service';
 
 @NgModule({
   imports: [
@@ -129,7 +130,8 @@ import { SetorService } from '../setor/setor.service';
     HttpAppClient,
     DashboardService,
     EnderecoService,
-    SetorService
+    SetorService,
+    CategoriaService
   ]
 })
 export class SharedModule { }

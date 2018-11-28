@@ -32,7 +32,7 @@ export class ChamadosNovoComponent implements OnInit {
   public maskCPF = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
 
   ngOnInit() {
-    //this.obterSetores();
+    this.obterSetores();
   }
 
 
@@ -45,6 +45,7 @@ export class ChamadosNovoComponent implements OnInit {
       })
       .subscribe((x) => {
         this.setores = x.setores;
+        console.log(this.setores);
       })
   }
 

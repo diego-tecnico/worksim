@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IUsuario } from './../../models/IUsuario';
 import { ToastrService } from 'ngx-toastr';
-import { IUsuarios } from '../../models/IFiltroUsuario';
+import { IUsuarios, ISetor } from '../../models/IFiltroUsuario';
+import { SetorService } from '../../setor/setor.service';
+import { UsuariosService } from '../../usuarios/usuarios.service';
+import { CategoriaService } from '../../categoria/categoria.service';
+import { ICategoria } from '../../models/ICategoria';
+import { IFiltrarChamado } from '../../models/IFiltrarChamado';
 
 //const swal = require('sweetalert');
 
@@ -14,80 +19,87 @@ import { IUsuarios } from '../../models/IFiltroUsuario';
 export class ChamadosListarComponent implements OnInit {
 
   usuarios: IUsuarios[] = [];
-
+  categorias: ICategoria[] = [];
+  setores: ISetor[] = [];
   filtros: IUsuarios = {};
+  chamado: IFiltrarChamado = {};
 
   quantidadeDeChamados = 0;
   carregando = false;
-  constructor(private toastrService: ToastrService) {
+  constructor(private toastrService: ToastrService,
+    private setorService: SetorService,
+    private usuariosService: UsuariosService,
+    private categoriaService: CategoriaService) {
+  }
+
+  tiposDeChk = [{ nome: 'todos', value: false }, { nome: 'aberto', value: false }, { nome: 'reaberto', value: false }, { nome: 'devolvido', value: false }, { nome: 'finalizado', value: false }, { nome: 'emAtendimento', value: false }];
+  sla = {
+    foraDoPrazo: 'F',
+    dentroDoprazo: 'P'
+  };
+
+
+  chkTodos(chkTodos) {
+    if (chkTodos.checked)
+      this.tiposDeChk.map(x => x.value = true);
+    else
+      this.tiposDeChk.map(x => x.value = false);
+  }
+
+  chkFiltros(acao, chkTipo) {
+    this.tiposDeChk.find(x => x.nome == chkTipo.nome).value = acao.checked;
+    this.verificarChkTodos();
+  }
+
+  verificarChkTodos() {
+    let checks = this.tiposDeChk.filter(x => x.value == true && x.nome != 'todos').length == (this.tiposDeChk.length - 1);
+
+    this.tiposDeChk.find(x => x.nome == 'todos').value = checks;
   }
 
   ngOnInit() {
-    //this.obterColaboradores();
+    this.carregando = true;
+    this.obterCategorias();
+    this.obterColaboradores();
+    this.obterSetores();
+  }
+
+  PesquisarChamado() {
+
+  }
+
+
+  obterCategorias() {
+    this.categoriaService.obterCategorias()
+      .finally(() => {
+        this.carregando = false;
+      })
+      .subscribe((x) => {
+        this.categorias = x.categorias;
+        console.log(this.categorias);
+      })
   }
 
   obterColaboradores() {
-    this.carregando = true;
-    //this.usuariosService.obterColaboradores(this.filtros)
-    //  .finally(() => {
-    //    this.carregando = false;
-    //  })
-    //  .subscribe((x) => {
-    //    this.usuarios = x.usuarios;
-    //    this.quantidadeDeUsuarios = this.usuarios.length;
-    //    console.log(this.usuarios);
-    //  })
+    this.usuariosService.obterColaboradores(this.filtros)
+      .finally(() => {
+        this.carregando = false;
+      })
+      .subscribe((x) => {
+        this.usuarios = x.usuarios;
+        console.log(this.usuarios);
+      })
   }
 
-  bloquearUsuario(usuario: any) {
-    //swal({
-    //  title: `Deseja realmente bloquear o usuario ${usuario.nome} ?`,
-    //  text: `O usuario ${usuario.nome} não irá poder mais acessar o sistema ate que você o desbloqueie novamente, deseja continuar?`,
-    //  icon: 'warning',
-    //  dangerMode: true,
-    //  buttons: {
-    //    cancel: 'CANCELAR',
-    //    confirm: {
-    //      text: 'BLOQUEAR',
-    //      value: 'confirm'
-    //    }
-    //  },
-    //})
-    //  .then((bloquearUsuario) => {
-    //    if (bloquearUsuario !== 'confirm') {
-    //    return;
-    //    }
-    //    this.usuarioService.bloquearUsuario(usuario)
-    //      .subscribe((usuario) => {
-    //        this.listarTodosUsuarios();
-    //        this.toastrService.success('Usuario bloqueado!');
-    //      });
-    //});
+  obterSetores() {
+    this.setorService.obterSetores()
+      .finally(() => {
+        this.carregando = false;
+      })
+      .subscribe((x) => {
+        this.setores = x.setores;
+        console.log(this.setores);
+      })
   }
 
-  desbloquearUsuario(usuario: any) {
-    //swal({
-    //  title: `Deseja realmente liberar o acesso do usuario ${usuario.nome} ?`,
-    //  text: `O usuario ${usuario.nome} a partir de agora vai poder acessar o sistema ate que você o bloqueie novamente, deseja continuar?`,
-    //  icon: 'warning',
-    //  dangerMode: true,
-    //  buttons: {
-    //    cancel: 'CANCELAR',
-    //    confirm: {
-    //      text: 'DESBLOQUEAR',
-    //      value: 'confirm'
-    //    }
-    //  },
-    //})
-    //  .then((bloquearUsuario) => {
-    //    if (bloquearUsuario !== 'confirm') {
-    //      return;
-    //    }
-    //    this.usuarioService.bloquearUsuario(usuario)
-    //      .subscribe((usuario) => {
-    //        this.listarTodosUsuarios();
-    //        this.toastrService.success('Usuario desbloqueado!');
-    //      });
-    //  });
-  }
 }

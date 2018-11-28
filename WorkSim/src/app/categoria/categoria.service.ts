@@ -9,14 +9,14 @@ import { promise } from 'selenium-webdriver';
 
 
 @Injectable()
-export class SetorService {
+export class CategoriaService {
 
     constructor(private http: HttpAppClient) { }
 
-    public obterSetores(): Observable<any> {
+    public obterCategorias(): Observable<any> {
       this.http.autorizationHeader = true;
 
-        return this.http.get('api/setor')
+        return this.http.get('api/categoria')
             .map((x) => {
               return x;
             });
